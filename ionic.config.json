@@ -1,5 +1,7 @@
 {
   "name": "appSimu",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
