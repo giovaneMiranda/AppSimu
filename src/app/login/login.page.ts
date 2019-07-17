@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../interfaces/user';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @Component({
@@ -17,42 +18,62 @@ export class LoginPage implements OnInit {
   constructor(
     private loadingController: LoadingController,
     private toastController: ToastController,
-    private authService: AuthService
+    private authService: AuthService,
+    private afs: AngularFirestore
 
   ) { }
 
   ngOnInit() {
   }
 
-  login() {
+  async login() {
+    await this.presentLoading();
+
+    try {
+      await this.authService.login(this.userLogin);
+    } catch (error) {
+      let message: string;
+      console.error(error);
+
+
+      this.presentToast(error.message);
+    } finally {
+      this.loading.dismiss();
+    }
 
   }
 
   async register() {
     await this.presentLoading();
     try {
-      await this.authService.register(this.userRegister);
+     const newUSer = await this.authService.register(this.userRegister);
+
+     const newUserObject= Object.assign({},this.userRegister);
+
+     delete newUserObject.email;
+     delete newUserObject.password;
+     await this.afs.collection('User').doc(newUSer.user.uid).set(newUserObject);
     } catch (error) {
       let message: string;
 
-      switch(error.code){
+      switch (error.code) {
         case 'auth/weak-password':
-          message= 'Senha deve ter no mínimo 6 caracteres.'
+          message = 'Senha deve ter no mínimo 6 caracteres.'
           break;
 
-          case 'auth/email-already-in-use':
-          message= 'O endereço de e-mail já está sendo usado por outra conta'
+        case 'auth/email-already-in-use':
+          message = 'O endereço de e-mail já está sendo usado por outra conta'
           break;
 
-          case 'auth/invalid-email':
-          message= 'O endereço de email está mal formatado.'
+        case 'auth/invalid-email':
+          message = 'O endereço de email está mal formatado.'
           break;
 
-          case 'auth/argument-error':
-          message= 'O campo de email e senha devem ser preencidos.'
+        case 'auth/argument-error':
+          message = 'O campo de email e senha devem ser preencidos.'
           break;
       }
-      
+
       console.error(error);
 
 
