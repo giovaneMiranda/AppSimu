@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule',canActivate: [LoginGuard]},
   { path: 'ativos', loadChildren: './ativos/ativos.module#AtivosPageModule' },
   { path: 'detalhe-acao', loadChildren: './detalhe-acao/detalhe-acao.module#DetalheAcaoPageModule' },
+
 ];
 
 @NgModule({
