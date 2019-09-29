@@ -50,6 +50,7 @@ export class LoginPage implements OnInit {
 
      const newUserObject= Object.assign({},this.userRegister);
 
+     newUserObject.dinheiro=10000; 
      delete newUserObject.email;
      delete newUserObject.password;
      await this.afs.collection('User').doc(newUSer.user.uid).set(newUserObject);
