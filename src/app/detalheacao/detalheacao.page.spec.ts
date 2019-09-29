@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetalheAcaoPage } from './detalhe-acao.page';
+import { DetalheAcaoPage } from './detalheacao.page';
 
 describe('DetalheAcaoPage', () => {
   let component: DetalheAcaoPage;
