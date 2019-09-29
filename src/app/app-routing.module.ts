@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [AuthGuard] },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule',canActivate: [LoginGuard]},
-  { path: 'ativos', loadChildren: './ativos/ativos.module#AtivosPageModule' },
   { path: 'detalhe-acao', loadChildren: './detalhe-acao/detalhe-acao.module#DetalheAcaoPageModule' },
 
 ];
