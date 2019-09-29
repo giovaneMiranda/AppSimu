@@ -33,27 +33,10 @@ export class LoginPage implements OnInit {
       await this.authService.login(this.userLogin);
     } catch (error) {
       let message: string;
-
-      switch (error.code) {
-        case 'auth/argument-error':
-          message = 'O campo de email e senha devem ser preencidos.'
-          break;
-
-          case 'auth/invalid-email':
-          message = 'O endereço de email está mal formatado.'
-          break;
-       
-          case 'auth/user-not-found':
-          message = 'O endereço de email ou a senha que você inseriu não é válido.'
-          break;
-      }
-
-
-
       console.error(error);
 
 
-      this.presentToast(message);
+      this.presentToast(error.message);
     } finally {
       this.loading.dismiss();
     }
@@ -79,7 +62,7 @@ export class LoginPage implements OnInit {
           break;
 
         case 'auth/email-already-in-use':
-          message = 'O endereço de email já está sendo usado por outra conta.'
+          message = 'O endereço de e-mail já está sendo usado por outra conta'
           break;
 
         case 'auth/invalid-email':
