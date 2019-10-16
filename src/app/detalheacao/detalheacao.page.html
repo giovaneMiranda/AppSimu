@@ -22,8 +22,22 @@
   </div>
 <div> 
     <section  class="but-div">
-        <ion-button class="buttons" color="success">Venda</ion-button>
-        <ion-button class="buttons" color="danger">Compra</ion-button>
+        <ion-button class="buttons" color="success" (click)="venda()" >Venda</ion-button>
+        <ion-button class="buttons" color="danger" (click)="compra()" >Compra</ion-button>
     </section>
-  </div>
+</div>
+
+<div class="comp-div" *ngIf="comp">
+  <ion-item>
+    <ion-range min="0" max="1000" pin color="secondary">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-range>
+  </ion-item>
+</div>
+
+<div class="vend-div" *ngIf="vend">
+
+</div>
+
 </ion-content>
