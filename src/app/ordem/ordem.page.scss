@@ -1,5 +1,13 @@
 ion-toolbar{
     --background:var(--ion-color-primary);
-} 
-
     
+} 
+ion-toolbar ion-icon {
+   
+    color: #ffffff;
+    
+}
+    
+.master{
+    --ion-background-color:  var(--ion-color-secondary);
+}
