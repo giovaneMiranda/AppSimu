@@ -1,13 +1,13 @@
 <ion-app>
-  <ion-header >
+  <ion-header>
     <ion-toolbar>
       <ion-buttons slot="secondary">
         <ion-button>
           <ion-icon slot="icon-only" name="logo-ionic"></ion-icon>
         </ion-button>
       </ion-buttons>
-
-      <ion-title>{{user.dinheiro}}</ion-title>
+      <ion-icon name="cash"></ion-icon>
+      <ion-title *ngIf="dataUser">R$ {{dataUser.dinheiro}}</ion-title>
 
       <ion-buttons slot="primary">
         <ion-button>
@@ -17,9 +17,9 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content class="master">
+  <ion-content class="master">
 
 
 
-  
-</ion-content>
+
+  </ion-content>
