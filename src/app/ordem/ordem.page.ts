@@ -20,31 +20,30 @@ export class OrdemPage implements OnInit {
   private ordensCompra = new Array<OrdemCompra>();
   private ordensCompraSub: Subscription
   private userid
+private authUser: Subscription
+
+
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
     private OrdemService: OrdemService,private afa: AngularFireAuth) {
-
-
-   
-      if (user) this.afs.collection('User')
-        .doc(user.uid)
-        .valueChanges()
-        .subscribe(docUser => {
-          this.savemoney(docUser)
-
-        });
-   
-  
     this.ionViewDidLoad()
     
+    this.authService.getAuth().onAuthStateChanged(user => {
+      this.saveId(user)
+   }
+   )
   }
 
   ionViewDidLoad() {
-    this.authService.getAuth().onAuthStateChanged(user => {
-       this.saveId(user)
-    }
-    )
+ 
 
+    if (this.userid) this.afs.collection('User')
+    .doc(this.userid)
+    .valueChanges()
+    .subscribe(docUser => {
+      this.savemoney(docUser)
+
+    });
     
   }
   ngOnInit() {

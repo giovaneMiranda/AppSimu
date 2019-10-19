@@ -21,7 +21,9 @@ private userId:String
     private authService: AuthService,
     private afs: AngularFirestore
 
-  ) { }
+  ) { 
+    
+  }
 
   ngOnInit() {
   }
@@ -31,7 +33,7 @@ private userId:String
 
     try {
       await  this.authService.login(this.userLogin);
-      
+
     } catch (error) {
       let message: string;
       console.error(error);
