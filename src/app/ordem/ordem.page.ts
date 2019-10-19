@@ -29,21 +29,28 @@ private authUser: Subscription
     this.ionViewDidLoad()
     
     this.authService.getAuth().onAuthStateChanged(user => {
-      this.saveId(user)
-   }
-   )
+      
+
+      if (user.uid) this.afs.collection('User')
+      .doc(user.uid)
+      .valueChanges()
+      .subscribe(docUser => {
+        this.savemoney(docUser)
+  
+      });
+    })
+
+
+    /* this.ordensCompraSub = this.OrdemService.getOrdem().subscribe(data=> {
+      this.ordensCompra = data;
+    }); */
+
   }
 
   ionViewDidLoad() {
  
 
-    if (this.userid) this.afs.collection('User')
-    .doc(this.userid)
-    .valueChanges()
-    .subscribe(docUser => {
-      this.savemoney(docUser)
-
-    });
+   
     
   }
   ngOnInit() {

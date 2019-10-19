@@ -23,18 +23,18 @@ export class OrdemService {
 
 
   getOrdem() {
-
+/* console.log(this.userid)
     return this.afs.collection('User')
       .doc(this.userid).collection<OrdemCompra>('OrdemCompra')
       .snapshotChanges().pipe(map(actions => {
-        actions.map(a => {
+       return actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
 
-
+return {id, ...data}
         });
       }
-      ))
+      )) */
 
   }
 
