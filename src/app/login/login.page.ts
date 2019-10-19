@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
-
+private userId:String 
   constructor(
     private loadingController: LoadingController,
     private toastController: ToastController,
@@ -30,7 +30,8 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
 
     try {
-      await this.authService.login(this.userLogin);
+      await  this.authService.login(this.userLogin);
+      
     } catch (error) {
       let message: string;
       console.error(error);

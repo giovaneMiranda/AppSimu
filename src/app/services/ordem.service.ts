@@ -24,18 +24,7 @@ export class OrdemService {
 
   getOrdem() {
 
-    return this.afs.collection('User')
-      .doc(this.getUser()).collection<OrdemCompra>('OrdemCompra')
-      .snapshotChanges().pipe(map(actions => {
-        actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-
-
-        });
-      }
-      ))
-
+    
 
   }
 

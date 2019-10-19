@@ -6,6 +6,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Userbd } from '../interfaces/userbd';
 import { OrdemCompra } from '../interfaces/ordem-compra';
 import { Subscription } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth/auth';
+
 
 @Component({
   selector: 'app-ordem',
@@ -17,11 +19,13 @@ export class OrdemPage implements OnInit {
   public dataUser: Userbd
   private ordensCompra = new Array<OrdemCompra>();
   private ordensCompraSub: Subscription
-
+  private userid
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
-    private OrdemService: OrdemService) {
-    this.authService.getAuth().onAuthStateChanged(user => {
+    private OrdemService: OrdemService,private afa: AngularFireAuth) {
+
+
+   
       if (user) this.afs.collection('User')
         .doc(user.uid)
         .valueChanges()
@@ -29,13 +33,20 @@ export class OrdemPage implements OnInit {
           this.savemoney(docUser)
 
         });
-    }
-    )
-    this.ordensCompraSub = this.OrdemService.getOrdem()
-
+   
+  
+    this.ionViewDidLoad()
+    
   }
 
+  ionViewDidLoad() {
+    this.authService.getAuth().onAuthStateChanged(user => {
+       this.saveId(user)
+    }
+    )
 
+    
+  }
   ngOnInit() {
 
 
@@ -44,6 +55,13 @@ export class OrdemPage implements OnInit {
 
   savemoney(doc) {
     this.dataUser = doc
+  }
+
+  saveId(user){
+     this.userid=user.uid
+     console.log(user.uid)
+     return this.userid
+    
   }
 
 }
