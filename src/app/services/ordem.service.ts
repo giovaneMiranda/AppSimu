@@ -14,9 +14,7 @@ export class OrdemService {
   constructor(private afs: AngularFirestore,
     private authService: AuthService,
     private afa: AngularFireAuth) {
-      this.afa.authState.subscribe(user=>{
-        this.userid=user.uid
-      })
+     
 
 
   }

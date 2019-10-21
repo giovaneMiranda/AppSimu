@@ -26,19 +26,18 @@ private authUser: Subscription
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
     private OrdemService: OrdemService,private afa: AngularFireAuth) {
-    this.ionViewDidLoad()
     
-    this.authService.getAuth().onAuthStateChanged(user => {
+    
+    
       
 
-      if (user.uid) this.afs.collection('User')
-      .doc(user.uid)
+      if (this.userid) this.afs.collection('User')
+      .doc(this.userid)
       .valueChanges()
       .subscribe(docUser => {
         this.savemoney(docUser)
   
       });
-    })
 
 
     /* this.ordensCompraSub = this.OrdemService.getOrdem().subscribe(data=> {
@@ -48,13 +47,14 @@ private authUser: Subscription
   }
 
   ionViewDidLoad() {
- 
-
    
-    
   }
   ngOnInit() {
+    this.afa.authState.subscribe(user=> {
+      if(user) {this.userid=user.uid}
+     });
 
+     
 
   }
 
