@@ -7,6 +7,8 @@ import { Userbd } from '../interfaces/userbd';
 import { OrdemCompra } from '../interfaces/ordem-compra';
 import { Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth/auth';
+import { map } from 'rxjs/operators';
+import { OrdemVenda } from '../interfaces/ordem-venda';
 
 
 @Component({
@@ -19,56 +21,57 @@ export class OrdemPage implements OnInit {
   public dataUser: Userbd
   private ordensCompra = new Array<OrdemCompra>();
   private ordensCompraSub: Subscription
-  private userid
-private authUser: Subscription
+  private ordensVenda = new Array<OrdemVenda>();
+  private ordensVendaSub: Subscription
 
 
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
-    private OrdemService: OrdemService,private afa: AngularFireAuth) {
-    
-    
-    
-      
-
-      if (this.userid) this.afs.collection('User')
-      .doc(this.userid)
-      .valueChanges()
-      .subscribe(docUser => {
-        this.savemoney(docUser)
-  
-      });
+    private OrdemService: OrdemService, private afa: AngularFireAuth) {
 
 
-    /* this.ordensCompraSub = this.OrdemService.getOrdem().subscribe(data=> {
-      this.ordensCompra = data;
-    }); */
+
+    this.authService.getAuth().onAuthStateChanged(user => {
+      if (user) {
+        this.afs.collection('User')
+          .doc(user.uid)
+          .valueChanges()
+          .subscribe(docUser => {
+            this.savemoney(docUser)
+
+          });
+
+        this.ordensCompraSub = this.OrdemService.getOrdemCompra(user).subscribe(data => {
+          this.ordensCompra = data;
+        })
+
+
+        this.ordensVendaSub = this.OrdemService.getOrdemVenda(user).subscribe(data => {
+          this.ordensVenda = data;
+
+        })
+
+
+      }
+
+    });
+
 
   }
 
-  ionViewDidLoad() {
-   
-  }
   ngOnInit() {
-    this.afa.authState.subscribe(user=> {
-      if(user) {this.userid=user.uid}
-     });
-
-     
 
   }
 
-
+  ngOnDestroy() {
+    this.ordensCompraSub.unsubscribe();
+    this.ordensVendaSub.unsubscribe();
+  }
   savemoney(doc) {
     this.dataUser = doc
   }
 
-  saveId(user){
-     this.userid=user.uid
-     console.log(user.uid)
-     return this.userid
-    
-  }
+
 
 }
 

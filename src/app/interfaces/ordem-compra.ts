@@ -1,8 +1,8 @@
 export interface OrdemCompra {
-    id: String
+    id?: String;
     nomeAcao?: String;
     tipoOrdem?: String;
-    quantidadeAcao?: number;
-    valorOrdem?: number;
+    quantidadeAcao: number;
+    valorOrdem: number;
 }
 

@@ -1,41 +1,148 @@
 <ion-app>
   <ion-header>
 
-
-    <ion-toolbar>
-      <ion-buttons slot="secondary">
-        <ion-button>
+    <!-- cabecalho!!!!!!!!!!!!!! -->
+    <ion-toolbar mode="ios">
+      <ion-buttons>
+        <ion-button routerLink="/home" slot="secondary">
           <ion-icon slot="icon-only" name="home"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <span >
+      <ion-title>
         R$ {{dataUser.dinheiro}}
-      </span>
+      </ion-title>
 
 
     </ion-toolbar>
   </ion-header>
 
-  <ion-content class="master">
+  <!-- cabecalho!!!!!!!!!!!!!!!! -->
 
-    <ion-list>
+  <ion-content class="master">
+    <div class="listCompra">
+      <h4>Ordem Compra</h4>
+    </div>
+    <ion-list *ngIf="!ordensCompra.length">
       <ion-item *ngFor="let item of [0, 1, 2]">
-        <ion-avatar slot="start">
-          <ion-skeleton-text animated></ion-skeleton-text>
-        </ion-avatar>
+
         <ion-label>
           <h3>
-            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
           </h3>
           <p>
-            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
           </p>
           <p>
-            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
           </p>
         </ion-label>
       </ion-item>
     </ion-list>
+
+
+    <ion-list>
+      <!-- <ion-list-header>
+        Compra
+      </ion-list-header> -->
+      <ion-item-sliding *ngFor="let ordemCompra of ordensCompra">
+
+        <ion-item>
+
+
+          <ion-label class="infoCompra">
+            <h2> {{ ordemCompra.nomeAcao }} : </h2>
+            <p>Tipo de Ordem: {{ ordemCompra.tipoOrdem }}</p>
+            <p>Quantidade de Ações: {{ ordemCompra.quantidadeAcao }}</p>
+            <p>Limite da Ordem: {{ ordemCompra.valorOrdem | currency: 'BRL'}}</p>
+
+          </ion-label>
+
+
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteProduct(ordemCompra.id)">
+            <ion-icon slot="top" name="trash"></ion-icon>
+            Excluir
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="listVenda">
+      <h4>Ordem Venda</h4>
+    </div>
+    <ion-list *ngIf="!ordensVenda.length">
+      <ion-item *ngFor="let item of [0, 1, 2]">
+
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-list>
+      <!-- <ion-list-header>
+          Compra
+        </ion-list-header> -->
+      <ion-item-sliding *ngFor="let ordemVenda of ordensVenda">
+
+        <ion-item>
+
+
+          <ion-label class="infoVenda">
+            <h2> {{ ordemVenda.nomeAcao }} : </h2>
+            <p>Tipo de Ordem: {{ ordemVenda.tipoOrdem }}</p>
+            <p>Quantidade de Ações: {{ ordemVenda.quantidadeAcao }}</p>
+            <p *ngIf="ordemVenda.valorStopLoss">Stop Loss: {{ ordemVenda.valorStopLoss | currency: 'BRL'}}</p>
+            <p *ngIf="ordemVenda.valorStopGain">Stop Gain: {{ ordemVenda.valorStopGain | currency: 'BRL'}}</p>
+          </ion-label>
+
+
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteProduct(ordemVenda.id)">
+            <ion-icon slot="top" name="trash"></ion-icon>
+            Excluir
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+
+
+
+
+
 
 
   </ion-content>

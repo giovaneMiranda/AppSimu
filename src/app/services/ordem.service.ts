@@ -4,36 +4,52 @@ import { AuthService } from './auth.service';
 import { OrdemCompra } from '../interfaces/ordem-compra';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { OrdemVenda } from '../interfaces/ordem-venda';
 @Injectable({
   providedIn: 'root'
 })
 export class OrdemService {
 
-   userid: string
+  userid: string
 
   constructor(private afs: AngularFirestore,
     private authService: AuthService,
     private afa: AngularFireAuth) {
-     
+
 
 
   }
 
 
-  getOrdem() {
-/* console.log(this.userid)
+  getOrdemCompra(userid) {
+
     return this.afs.collection('User')
-      .doc(this.userid).collection<OrdemCompra>('OrdemCompra')
+      .doc(userid.uid).collection<OrdemCompra>('OrdemCompra')
       .snapshotChanges().pipe(map(actions => {
-       return actions.map(a => {
+        return actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
 
-return {id, ...data}
+          return { id, ...data }
         });
       }
-      )) */
+      ))
 
+  }
+
+
+  getOrdemVenda(userid) {
+    return this.afs.collection('User')
+      .doc(userid.uid).collection<OrdemVenda>('OrdemVenda')
+      .snapshotChanges().pipe(map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+
+          return { id, ...data }
+        });
+      }
+      ))
   }
 
 
