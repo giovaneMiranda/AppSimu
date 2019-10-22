@@ -1,0 +1,15 @@
+ion-toolbar{
+    --background:var(--ion-color-primary);
+   
+    padding-top: 3%!important;
+}
+
+.master{
+    --ion-background-color:  var(--ion-color-secondary);
+
+    .listCarteria{
+        text-align: center;
+        border-bottom: 1px solid white;
+        color: var(--ion-color-primary);
+    }
+}

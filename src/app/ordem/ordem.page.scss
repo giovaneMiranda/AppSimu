@@ -1,16 +1,7 @@
 ion-toolbar{
     --background:var(--ion-color-primary);
-    color: #ffffff;
-    font-size: 10px;
-    text-align: center;
-    
-
-    ion-icon {
-    color: #ffffff;
-    }
-    
-    
-
+   
+    padding-top: 3%!important;
 }
 
 
@@ -25,7 +16,7 @@ ion-icon{
 
     .listCompra{
      text-align: center;
-     border-bottom: 3px solid #757c86;
+     border-bottom: 1px solid white;
      color: var(--ion-color-primary);
  }
 

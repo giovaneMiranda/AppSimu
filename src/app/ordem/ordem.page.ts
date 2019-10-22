@@ -23,7 +23,7 @@ export class OrdemPage implements OnInit {
   private ordensCompraSub: Subscription
   private ordensVenda = new Array<OrdemVenda>();
   private ordensVendaSub: Subscription
-private userId;
+  private userId;
 
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
@@ -33,14 +33,7 @@ private userId;
 
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
-        this.userId=user.uid;
-        this.afs.collection('User')
-          .doc(user.uid)
-          .valueChanges()
-          .subscribe(docUser => {
-            this.savemoney(docUser)
-
-          });
+        this.userId = user.uid;
 
         this.ordensCompraSub = this.OrdemService.getOrdemCompra(user).subscribe(data => {
           this.ordensCompra = data;
@@ -64,21 +57,21 @@ private userId;
 
   }
 
-  ngOnDestroy() {
+  ionViewDidLeave() {
     this.ordensCompraSub.unsubscribe();
     this.ordensVendaSub.unsubscribe();
   }
- async savemoney(doc) {
+  async savemoney(doc) {
     this.dataUser = doc
   }
 
-async deleteOrdemVenda(id:string , userid){
-  this.OrdemService.deleteOrdemVenda(id,userid);
-}
+  async deleteOrdemVenda(id: string, userid) {
+    this.OrdemService.deleteOrdemVenda(id, userid);
+  }
 
 
-async deleteOrdemCompra(id:string , userid){
-  this.OrdemService.deleteOrdemCompra(id,userid);
-}
+  async deleteOrdemCompra(id: string, userid) {
+    this.OrdemService.deleteOrdemCompra(id, userid);
+  }
 }
 

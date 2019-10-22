@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-carteira',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarteiraPage implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService,
+    private afs: AngularFirestore) {
+
+  }
 
   ngOnInit() {
   }
