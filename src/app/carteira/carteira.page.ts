@@ -11,7 +11,7 @@ import { CarteiraService } from '../services/carteira.service';
   styleUrls: ['./carteira.page.scss'],
 })
 export class CarteiraPage implements OnInit {
-  private acao = new Array<Acao>();
+  private acaoList = new Array<Acao>();
   private acaoSub: Subscription
   private userId;
 
@@ -24,8 +24,8 @@ export class CarteiraPage implements OnInit {
         this.userId = user.uid;
 
         this.acaoSub = this.carteiraService.getAcao(user).subscribe(data => {
-          this.acao = data;
-          console.log(this.acao)
+          this.acaoList = data;
+          
         })
       }
     })

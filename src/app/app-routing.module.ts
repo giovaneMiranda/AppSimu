@@ -14,9 +14,9 @@ const routes: Routes = [
   { path: 'aprender', loadChildren: './aprender/aprender.module#AprenderPageModule' },
 
   { path: 'toolbar', loadChildren: './toolbar/toolbar.module#ToolbarPageModule' },
-  { path: 'consultaacao', loadChildren: '../consultaacao/consultaacao.module#ConsultaacaoPageModule' },
-  { path: 'carteira', loadChildren: '../carteira/carteira.module#CarteiraPageModule' },
-  { path: 'ordem', loadChildren: '../ordem/ordem.module#OrdemPageModule' },
+  { path: 'consultaacao', loadChildren: './consultaacao/consultaacao.module#ConsultaacaoPageModule' },
+  { path: 'carteira', loadChildren: './carteira/carteira.module#CarteiraPageModule' },
+  { path: 'ordem', loadChildren: './ordem/ordem.module#OrdemPageModule' },
 
 
 
