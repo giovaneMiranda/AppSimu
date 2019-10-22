@@ -22,10 +22,10 @@
     <div class="listCompra">
       <h4>Ordem Compra</h4>
     </div>
-    <ion-list *ngIf="!ordensCompra.length">
-      <ion-item *ngFor="let item of [0, 1, 2]">
+    <ion-list  mode="ios" *ngIf="!ordensCompra.length">
+      <ion-item  mode="ios" *ngFor="let item of [0]">
 
-        <ion-label>
+        <ion-label  mode="ios">
           <h3>
             <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
           </h3>
@@ -43,16 +43,16 @@
     </ion-list>
 
 
-    <ion-list>
+    <ion-list  mode="ios">
       <!-- <ion-list-header>
         Compra
       </ion-list-header> -->
-      <ion-item-sliding *ngFor="let ordemCompra of ordensCompra">
+      <ion-item-sliding  mode="ios" *ngFor="let ordemCompra of ordensCompra">
 
-        <ion-item>
+        <ion-item  mode="ios">
 
 
-          <ion-label class="infoCompra">
+          <ion-label  mode="ios" class="infoCompra">
             <h2> {{ ordemCompra.nomeAcao }} : </h2>
             <p>Tipo de Ordem: {{ ordemCompra.tipoOrdem }}</p>
             <p>Quantidade de Ações: {{ ordemCompra.quantidadeAcao }}</p>
@@ -63,8 +63,8 @@
 
         </ion-item>
 
-        <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="deleteProduct(ordemCompra.id)">
+        <ion-item-options  mode="ios" side="end">
+          <ion-item-option color="danger" (click)="deleteOrdemCompra(ordemCompra.id, userId)">
             <ion-icon slot="top" name="trash"></ion-icon>
             Excluir
           </ion-item-option>
@@ -88,10 +88,10 @@
     <div class="listVenda">
       <h4>Ordem Venda</h4>
     </div>
-    <ion-list *ngIf="!ordensVenda.length">
-      <ion-item *ngFor="let item of [0, 1, 2]">
+    <ion-list  mode="ios" *ngIf="!ordensVenda.length">
+      <ion-item  mode="ios" *ngFor="let item of [0]">
 
-        <ion-label>
+        <ion-label mode="ios" >
           <h3>
             <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
           </h3>
@@ -109,16 +109,16 @@
     </ion-list>
 
 
-    <ion-list>
+    <ion-list  mode="ios">
       <!-- <ion-list-header>
           Compra
         </ion-list-header> -->
-      <ion-item-sliding *ngFor="let ordemVenda of ordensVenda">
+      <ion-item-sliding   mode="ios" *ngFor="let ordemVenda of ordensVenda">
 
-        <ion-item>
+        <ion-item  mode="ios">
 
 
-          <ion-label class="infoVenda">
+          <ion-label  mode="ios" class="infoVenda">
             <h2> {{ ordemVenda.nomeAcao }} : </h2>
             <p>Tipo de Ordem: {{ ordemVenda.tipoOrdem }}</p>
             <p>Quantidade de Ações: {{ ordemVenda.quantidadeAcao }}</p>
@@ -129,8 +129,8 @@
 
         </ion-item>
 
-        <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="deleteProduct(ordemVenda.id)">
+        <ion-item-options  mode="ios" side="end">
+          <ion-item-option color="danger" (click)="deleteOrdemVenda(ordemVenda.id,userId)">
             <ion-icon slot="top" name="trash"></ion-icon>
             Excluir
           </ion-item-option>

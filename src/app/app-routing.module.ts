@@ -11,8 +11,11 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule',canActivate: [LoginGuard]},
   { path: 'detalheacao', loadChildren: './detalheacao/detalheacao.module#DetalheAcaoPageModule' },
   { path: 'ordem', loadChildren: './ordem/ordem.module#OrdemPageModule'},
-  { path: 'ativos', loadChildren: './ativos/ativos.module#AtivosPageModule' },
   { path: 'aprender', loadChildren: './aprender/aprender.module#AprenderPageModule' },
+  { path: 'consultaacao', loadChildren: './consultaacao/consultaacao.module#ConsultaacaoPageModule' },
+  { path: 'carteira', loadChildren: './carteira/carteira.module#CarteiraPageModule' },
+ 
+
 ];
 
 @NgModule({

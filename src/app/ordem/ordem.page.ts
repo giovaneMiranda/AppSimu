@@ -23,7 +23,7 @@ export class OrdemPage implements OnInit {
   private ordensCompraSub: Subscription
   private ordensVenda = new Array<OrdemVenda>();
   private ordensVendaSub: Subscription
-
+private userId;
 
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
@@ -33,6 +33,7 @@ export class OrdemPage implements OnInit {
 
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
+        this.userId=user.uid;
         this.afs.collection('User')
           .doc(user.uid)
           .valueChanges()
@@ -67,11 +68,17 @@ export class OrdemPage implements OnInit {
     this.ordensCompraSub.unsubscribe();
     this.ordensVendaSub.unsubscribe();
   }
-  savemoney(doc) {
+ async savemoney(doc) {
     this.dataUser = doc
   }
 
+async deleteOrdemVenda(id:string , userid){
+  this.OrdemService.deleteOrdemVenda(id,userid);
+}
 
 
+async deleteOrdemCompra(id:string , userid){
+  this.OrdemService.deleteOrdemCompra(id,userid);
+}
 }
 
