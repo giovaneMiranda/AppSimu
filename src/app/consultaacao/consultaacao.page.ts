@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Acao } from '../interfaces/acao';
 
 @Component({
   selector: 'app-consultaacao',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./consultaacao.page.scss'],
 })
 export class ConsultaacaoPage implements OnInit {
+
 
   constructor() { }
 

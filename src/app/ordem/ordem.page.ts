@@ -19,8 +19,10 @@ import { OrdemVenda } from '../interfaces/ordem-venda';
 export class OrdemPage implements OnInit {
   //userData: AngularFireObject<any>
   public dataUser: Userbd
+
   private ordensCompra = new Array<OrdemCompra>();
   private ordensCompraSub: Subscription
+
   private ordensVenda = new Array<OrdemVenda>();
   private ordensVendaSub: Subscription
   private userId;

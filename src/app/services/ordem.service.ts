@@ -54,14 +54,14 @@ export class OrdemService {
 
 
 
-  deleteOrdemVenda(id: string, userid){
+  deleteOrdemVenda(id: string, userid) {
     return this.afs.collection('User')
-    .doc(userid).collection<OrdemVenda>('OrdemVenda').doc(id).delete()
+      .doc(userid).collection<OrdemVenda>('OrdemVenda').doc(id).delete()
   }
 
-  deleteOrdemCompra(id: string, userid){
+  deleteOrdemCompra(id: string, userid) {
     return this.afs.collection('User')
-    .doc(userid).collection<OrdemCompra>('OrdemCompra').doc(id).delete()
+      .doc(userid).collection<OrdemCompra>('OrdemCompra').doc(id).delete()
   }
 
 }
