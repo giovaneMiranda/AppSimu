@@ -18,7 +18,7 @@
 
 <ion-content class="master">
   
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar mode="ios"></ion-searchbar>
 
   <div class="listCarteria">
     <h4>Carteira de Ações</h4>
@@ -71,3 +71,18 @@
   
 
 </ion-content>
+
+<script>
+  const searchbar = document.querySelector('ion-searchbar');
+  const items = Array.from(document.querySelector('ion-list').children);
+  searchbar.addEventListener('ionInput', handleInput);
+  function handleInput(event) {
+    const query = event.target.value.toLowerCase();
+    requestAnimationFrame(() => {
+      items.forEach(item => {
+        const shouldShow = item.firstChild.textContent.toLowerCase().indexOf(query) > -1;
+        item.style.display = shouldShow ? 'block' : 'none';
+      });
+    });
+  }
+</script>

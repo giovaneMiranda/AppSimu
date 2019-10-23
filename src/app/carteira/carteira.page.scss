@@ -1,7 +1,7 @@
 ion-toolbar{
     --background:var(--ion-color-primary);
    
-    padding-top: 3%!important;
+    padding-top: 4%!important;
 }
 
 .master{
@@ -21,7 +21,11 @@ ion-toolbar{
 
      
      
-      
+     .sc-ion-searchbar-ios-h
+     {
+         --background: white !important;
+     }
+     
      
 }
 
@@ -29,5 +33,10 @@ ion-list p {
     font-size: small;
     color: #ffffff;
 }  
+
+    ion-searchbar{
+
+        --ion-background-color:white;
+    }
 
     
