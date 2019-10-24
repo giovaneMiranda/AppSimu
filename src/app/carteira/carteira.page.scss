@@ -1,7 +1,16 @@
-ion-toolbar{
+
+  ion-header{
+
+   ion-toolbar {
     --background:var(--ion-color-primary);
+    padding-top: 3%!important;
+}
+
+} 
+ ion-toolbar {
+    --background:var(--ion-color-secondary);
+    padding-bottom: 0px!important;
    
-    padding-top: 4%!important;
 }
 
 .master{
@@ -17,15 +26,16 @@ ion-toolbar{
         span{
             color: var(--ion-color-primary);
         }
-     }
 
-     
-     
-     .sc-ion-searchbar-ios-h
-     {
-         --background: white !important;
+        .itemNome p{
+            color: var(--ion-color-primary)
+            
+        }
+
+        .itemData td p{
+            text-align: center;
+        }
      }
-     
      
 }
 
@@ -34,9 +44,8 @@ ion-list p {
     color: #ffffff;
 }  
 
-    ion-searchbar{
-
-        --ion-background-color:white;
-    }
-
-    
+.sc-ion-searchbar-ios-h{
+    --background: white !important;
+        
+}
+  
