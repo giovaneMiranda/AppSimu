@@ -1,21 +1,38 @@
 <ion-content class="master">
   <ion-slides mode="ios">
     <ion-slide mode="ios">
-      <div class="slide-inner ion-padding">
-        <span>Login</span>
+      <table>
+        <tr>
+          <th>
+            <div class="slide-inner ion-padding">
+              <span>Login</span>
 
-        <ion-item mode="ios" class="ion-margin-top" lines="none">
-          <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
-        </ion-item>
+              <ion-item mode="ios" class="ion-margin-top" lines="none">
+                <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
+              </ion-item>
 
-        <ion-item mode="ios" class="ion-margin-top" lines="none">
-          <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
-        </ion-item>
+              <ion-item mode="ios" class="ion-margin-top" lines="none">
+                <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
+              </ion-item>
 
-        <ion-button mode="ios" class="ion-margin-top" (click)="login()" color="light" expand="block">
-          Entrar
-        </ion-button>
-      </div>
+              <ion-button mode="ios" class="ion-margin-top" (click)="login()" expand="block">
+                Entrar
+              </ion-button>
+
+            </div>
+          </th>
+        </tr>
+
+        <tr>
+          <td>
+            <div mode="ios">
+              <ion-item mode="ios" class="ion-margin-top btn" (click)="login()" expand="block">
+                Não possui cadastro? Click para cadastrar.
+              </ion-item>
+            </div>
+          </td>
+        </tr>
+      </table>
     </ion-slide>
 
     <ion-slide mode="ios">
@@ -34,7 +51,7 @@
           <ion-input type="password" placeholder="Senha" [(ngModel)]="userRegister.password"></ion-input>
         </ion-item>
 
-        <ion-button mode="ios" class="ion-margin-top" (click)="register()" color="light" expand="block">
+        <ion-button mode="ios" class="ion-margin-top" (click)="register()" expand="block">
           Cadastrar
         </ion-button>
       </div>
