@@ -1,47 +1,34 @@
-<ion-app>
-    <ion-menu side="start">
-      <ion-header>
-        <ion-toolbar translucent>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-list>
-          <ion-item>
-            <ion-icon name="home" slot="start"></ion-icon>
-            <ion-label>Home</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="person" slot="start"></ion-icon>
-            <ion-label>Profile</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="settings" slot="start"></ion-icon>
-            <ion-label>Settings</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
+<!-- cabecalho!!!!!!!!!!!!!! -->
+  <ion-toolbar mode="ios">
 
-    <div class="ion-page" main>
-        <ion-header>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-menu-button></ion-menu-button>
-            </ion-buttons>
-            <ion-title>Home</ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content padding>
-          <ion-button expand="block" onclick ="detalhe-acao.page.html">Ação</ion-button>
-          
-        </ion-content>
-      </div>
-  </ion-app>
-  
-  <script>
-    function openMenu() {
-      document.querySelector('ion-menu-controller')
-        .open();
-    }
-  </script>
+    <ion-title >
+        <!--ion-icon name="wallet"></ion-icon-->     
+      <span>R$</span>
+    </ion-title>
+
+  </ion-toolbar>
+<!-- cabecalho!!!!!!!!!!!!!!!! -->
+
+  <ion-content class="master">
+
+<div class="ion-padding">
+    <ion-button class="ion-margin-top" (click)="ordem()" color="primary" >
+        <ion-icon name="bookmarks"></ion-icon>
+        <ion-title>APRENDER</ion-title>
+    </ion-button>
+</div>
+
+<div class="ion-padding">
+    <ion-button class="ion-margin-top" (click)="ordem()" color="primary" >
+        <ion-icon name="trending-up"></ion-icon>
+        <ion-title>JOGAR</ion-title>
+    </ion-button>
+</div>
+
+<div class="ion-padding"> 
+    <ion-button class="ion-margin-top" (click)="ordem()" color="primary">
+        <ion-icon name="settings"></ion-icon>
+        <ion-title>CONFIGURAÇÃO</ion-title>
+    </ion-button>
+</div>   
+  </ion-content>

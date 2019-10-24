@@ -1,23 +1,25 @@
-.my-custom-menu {
-    --width: 500px;
-  }
-  .container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 75%;
-    margin: 0 auto;
-    z-index: 2;
+ion-toolbar{
+    --background:var(--ion-color-primary);
+    color: #ffffff;
+    font-size: 10px;
+    text-align: center;
+    
 
-    &.top {
-        top: 5%;
-    }
-
-    &.bottom {
-        bottom: 30%;
-
-        span {
-            color: #fff;
-        }
+    ion-icon {
+    color: #ffffff;
     }
 }
+
+ion-icon{
+    font-size: 30px;  
+    }
+
+.master{
+    --ion-background-color:  var(--ion-color-primary);
+} 
+
+ion-list p {
+        font-size: small;
+        color: #ffffff;
+    }
+
