@@ -27,6 +27,7 @@ ion-slides {
     height: 100%;
 
     .slide-inner {
+        display: inline-block;
         width: 75%;
         color: var(--ion-color-primary);
         background-image:linear-gradient(to bottom right,rgb(137, 139, 141), var(--ion-color-secondary)) ;
@@ -41,5 +42,15 @@ ion-slides {
                 --color: #fff;
             }
         }
+
+        .btn {
+            border: none;
+            background-color: inherit;
+            opacity: 0;
+            filter: alpha(opacity=50);
+           font-style: unset;
+            
+          }
     }
 }
+

@@ -1,7 +1,7 @@
 <ion-header>
 
   <!-- cabecalho!!!!!!!!!!!!!! -->
-  <ion-toolbar mode="ios">
+  <ion-toolbar class="cabecalho" mode="ios">
     <ion-buttons>
 
 
@@ -15,10 +15,12 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-toolbar class="filter">
+  <ion-searchbar></ion-searchbar>
+</ion-toolbar>
 
-<ion-content class="master">
-  
-  <ion-searchbar mode="ios"></ion-searchbar>
+<ion-content fullscreen class="master">
+
 
   <div class="listCarteria">
     <h4>Carteira de Ações</h4>
@@ -36,38 +38,60 @@
         <p>
           <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
         </p>
-        
+
       </ion-label>
     </ion-item>
   </ion-list>
 
 
- 
+
 
 
   <ion-list mode="ios">
     <!-- <ion-list-header>
         Compra
       </ion-list-header> -->
-    
-
-      <ion-item mode="ios" *ngFor="let acao of acaoList" button [routerLink]="['/detalheacao']">
 
 
-        <ion-label mode="ios" class="infoAcao">
-          <span> {{ acao.id }} : </span>
-          <p>Valor de Compra: {{ acao.valorCompra }}</p>
-          <p>Quantidade de Ações: {{ acao.quantidade }}</p>
-          <p>Data: {{ acao.dataCompra.seconds*1000 | date:'dd-MM-yyyy' }}</p>
-
-        </ion-label>
+    <ion-item mode="ios" *ngFor="let acao of acaoList" button [routerLink]="['/detalheacao']">
 
 
-      </ion-item>
+      <ion-label mode="ios" class="infoAcao">
+        <table style="width:100%">
+          <tr>
+            <th><span> {{ acao.id }} </span></th>
+          </tr>
+          <tr class="itemNome">
+            <th>
+              <p>Compra</p>
+            </th>
+            <th>
+              <p>Quantidade</p>
+            </th>
+            <th>
+              <p>Data</p>
+            </th>
+          </tr>
+          <tr class="itemData">
+            <td>
+              <p>{{ acao.valorCompra }}</p>
+            </td>
+            <td>
+              <p> {{ acao.quantidade }}</p>
+            </td>
+            <td>
+              <p> {{ acao.dataCompra.seconds*1000 | date:'dd-MM-yyyy' }}</p>
+            </td>
+          </tr>
+        </table>
+      </ion-label>
 
-      
+
+    </ion-item>
+
+
   </ion-list>
-  
+
 
 </ion-content>
 
@@ -79,7 +103,7 @@
     const query = event.target.value.toLowerCase();
     requestAnimationFrame(() => {
       items.forEach(item => {
-        const shouldShow = item.firstChild.textContent.toLowerCase().indexOf(query) > -1;
+        const shouldShow = item.firstChild.toLowerCase().indexOf(query) > -1;
         item.style.display = shouldShow ? 'block' : 'none';
       });
     });
