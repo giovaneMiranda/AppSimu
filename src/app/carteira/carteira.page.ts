@@ -23,9 +23,11 @@ export class CarteiraPage implements OnInit {
       if (user) {
         this.userId = user.uid;
 
+
+
         this.acaoSub = this.carteiraService.getAcao(user).subscribe(data => {
           this.acaoList = data;
-          
+
         })
       }
     })
