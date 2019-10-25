@@ -29,8 +29,8 @@ ion-slides {
     .slide-inner {
         display: inline-block;
         width: 75%;
-        color: var(--ion-color-primary);
-        background-image:linear-gradient(to bottom right,rgb(137, 139, 141), var(--ion-color-secondary)) ;
+        color: var(--ion-color-secondary);
+       
         border-radius: 10px;
 
         ion-item {

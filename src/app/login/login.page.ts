@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../interfaces/user';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController, IonSlides } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -14,15 +14,17 @@ export class LoginPage implements OnInit {
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
-private userId:String 
+  private userId: String
+  @ViewChild(IonSlides) slides: IonSlides;
+
   constructor(
     private loadingController: LoadingController,
     private toastController: ToastController,
     private authService: AuthService,
     private afs: AngularFirestore
 
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ private userId:String
     await this.presentLoading();
 
     try {
-      await  this.authService.login(this.userLogin);
+      await this.authService.login(this.userLogin);
 
     } catch (error) {
       let message: string;
@@ -49,14 +51,14 @@ private userId:String
   async register() {
     await this.presentLoading();
     try {
-     const newUSer = await this.authService.register(this.userRegister);
+      const newUSer = await this.authService.register(this.userRegister);
 
-     const newUserObject= Object.assign({},this.userRegister);
+      const newUserObject = Object.assign({}, this.userRegister);
 
-     newUserObject.dinheiro=10000; 
-     delete newUserObject.email;
-     delete newUserObject.password;
-     await this.afs.collection('User').doc(newUSer.user.uid).set(newUserObject);
+      newUserObject.dinheiro = 10000;
+      delete newUserObject.email;
+      delete newUserObject.password;
+      await this.afs.collection('User').doc(newUSer.user.uid).set(newUserObject);
     } catch (error) {
       let message: string;
 
@@ -101,5 +103,13 @@ private userId:String
       duration: 2000
     });
     toast.present();
+  }
+
+  segmentChangedSingUp() {
+    this.slides.slideNext();
+  }
+
+  segmentChangedSingIn() {
+    this.slides.slidePrev();
   }
 }

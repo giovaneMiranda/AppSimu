@@ -1,43 +1,35 @@
-<ion-content class="master">
+<ion-content class="master swiper-no-swiping">
   <ion-slides mode="ios">
     <ion-slide mode="ios">
-      <table>
-        <tr>
-          <th>
-            <div class="slide-inner ion-padding">
-              <span>Login</span>
 
-              <ion-item mode="ios" class="ion-margin-top" lines="none">
-                <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
-              </ion-item>
+      <div class="slide-inner ion-padding">
+        <h1>Login</h1>
 
-              <ion-item mode="ios" class="ion-margin-top" lines="none">
-                <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
-              </ion-item>
+        <ion-item mode="ios" class="ion-margin-top" lines="none">
+          <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
+        </ion-item>
 
-              <ion-button mode="ios" class="ion-margin-top" (click)="login()" expand="block">
-                Entrar
-              </ion-button>
+        <ion-item mode="ios" class="ion-margin-top" lines="none">
+          <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
+        </ion-item>
 
-            </div>
-          </th>
-        </tr>
+        <ion-button mode="ios" class="ion-margin-top" (click)="login()" expand="block">
+          Entrar
+        </ion-button>
 
-        <tr>
-          <td>
-            <div mode="ios">
-              <ion-item mode="ios" class="ion-margin-top btn" (click)="login()" expand="block">
-                Não possui cadastro? Click para cadastrar.
-              </ion-item>
-            </div>
-          </td>
-        </tr>
-      </table>
+        <ion-button mode="ios" fill="clear" class="ion-margin-top" (click)="segmentChangedSingUp()" expand="block"
+          style="color:white;">
+          <h4>Sing Up</h4>
+        </ion-button>
+      </div>
+
+
+
     </ion-slide>
 
     <ion-slide mode="ios">
       <div class="slide-inner ion-padding">
-        <span>Cadastro</span>
+        <h1>Cadastro</h1>
 
         <ion-item mode="ios" class="ion-margin-top" lines="none">
           <ion-input type="text" placeholder="Nome" [(ngModel)]="userRegister.name"></ion-input>
@@ -53,6 +45,11 @@
 
         <ion-button mode="ios" class="ion-margin-top" (click)="register()" expand="block">
           Cadastrar
+        </ion-button>
+
+        <ion-button mode="ios" fill="clear" class="ion-margin-top" (click)="segmentChangedSingIn()" expand="block"
+          style="color:white;">
+          <h4>Sing In</h4>
         </ion-button>
       </div>
     </ion-slide>
