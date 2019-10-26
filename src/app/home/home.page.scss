@@ -1,7 +1,34 @@
-.my-custom-menu {
-    --width: 500px;
-  }
-  .container {
+ion-toolbar{
+    --background:var(--ion-color-primary);
+    color: #ffffff;
+    font-size: 10px;
+    text-align: center;
+    
+
+    ion-icon {
+    color: #ffffff;
+    }
+}
+
+ion-icon{
+    font-size: 30px;  
+    }
+
+.master{
+    --ion-background-color:  var(--ion-color-primary);
+} 
+
+ion-list p {
+        font-size: small;
+        color: #ffffff;
+    }
+.centro {
+    display: inline-block;
+    margin: auto auto;
+    width: 75%;
+
+}
+.container {
     position: absolute;
     left: 0;
     right: 0;
@@ -20,4 +47,5 @@
             color: #fff;
         }
     }
+    
 }
