@@ -1,20 +1,28 @@
 
+  <ion-header>
 
-<ion-header class="top">
-  <ion-toolbar>
-    <ion-title  text-center>Detalhe Acao </ion-title>
-  </ion-toolbar>
-</ion-header>
-
+      <ion-toolbar mode="ios">
+          <ion-buttons>
+            <ion-button routerLink="/home" slot="secondary">
+              <ion-icon slot="icon-only" name="home"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>
+            R$ {{dataUser.dinheiro}}
+          </ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
 <ion-content class="master">
 
   <div> <!-- Dados padões em cima  -->
   </div> 
 
   <div>  <!-- Info Ações -->
-    <p text-center>
-      Empresa valor porcentagem
+    <p>
+      Empresa
     </p>
+    <p text-center>Abertura Fechamento Alta Baixa</p>
   </div>
 
   <div class="graf"> <!-- Grafico -->
@@ -23,17 +31,47 @@
 <div> 
     <section  class="but-div">
         <ion-button class="buttons" color="success" (click)="venda()" >Venda</ion-button>
-        <ion-button class="buttons" color="danger" (click)="compra()" >Compra</ion-button>
+        <ion-button class="buttons" color="danger" (click)="presentAlertConfirm()" >Compra</ion-button> 
+        <!-- <ion-button class="buttons" color="danger" (click)="compra()" >Compra</ion-button> -->
     </section>
 </div>
 
 <div class="comp-div" *ngIf="comp">
+      <ion-list>
+        <ion-item>
+          <ion-label>Tipo de Ordem</ion-label>
+            <ion-select>
+              <ion-select-option value="mercado">Mercado</ion-select-option>
+              <ion-select-option value="limitado">Limitado</ion-select-option>
+            </ion-select>
+          </ion-item>
+      </ion-list>
+      <ion-item>
+          <ion-label position="floating">Quantidade</ion-label>
+          <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">Valor</ion-label>
+          <ion-input></ion-input>
+      </ion-item>
+      <section  class="but-div">
+          <ion-button class="buttons" color="success" (click)="OkComp()" >Ok</ion-button>
+          <ion-button class="buttons" color="danger" (click)="CancelComp()" >Cancel</ion-button>
+      </section>
+<!--    </ion-content>
+
   <ion-item>
     <ion-range min="0" max="1000" pin color="secondary">
       <ion-icon slot="start" name="arrow-back"></ion-icon>
       <ion-icon slot="end" name="arrow-forward"></ion-icon>
     </ion-range>
   </ion-item>
+  -->
+</div>
+
+<div> <!--  Menu   -->
+
+
 </div>
 
 <div class="vend-div" *ngIf="vend">

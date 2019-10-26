@@ -1,10 +1,26 @@
 .master{
-    --ion-background-color: #808080;
+    --ion-background-color:  #757c86;
 }
 
-.top{
-    --ion-background-color: linear-gradient(to bottom right,rgb(226, 243, 77), var(--ion-color-primary));
+ion-toolbar{
+    --background:var(--ion-color-primary);
+    color: #ffffff;
+    font-size: 10px;
+    text-align: center;
+    
+
+    ion-icon {
+    color: #ffffff;
+    }
+    
+    
+
 }
+
+ion-icon{
+    font-size: 30px;  
+    }
+
 
 .buttons{ 
     text-align: center;
@@ -16,17 +32,18 @@
 
 .graf {
     width: 100%;
-    height: 40% ;
+    height: 70% ;
     text-align: center;
     border: 25px solid; /* As 4 bordas sólidas com 25px de espessura */
     border-color: #32CD32;
-    margin: 10px auto;
+    margin: 5px auto;
 }
 
 .comp-div{
     width: 80%;
+    height: 10%;
     text-align: center;
-    margin: 10px auto;
+    margin: 0px auto; 
 }
 
 .vend-div{
