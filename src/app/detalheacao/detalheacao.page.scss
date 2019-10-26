@@ -1,5 +1,5 @@
 .master{
-    --ion-background-color:  #757c86;
+    --ion-background-color:  var(--ion-color-secondary);
 }
 
 ion-toolbar{
@@ -24,10 +24,12 @@ ion-icon{
 
 .buttons{ 
     text-align: center;
-    margin: 15px 15px;
+    width: 40%;
+    margin: 15px 15px; 
 }
 .but-div{
     text-align: center;
+    
 }
 
 .graf {
@@ -35,7 +37,7 @@ ion-icon{
     height: 70% ;
     text-align: center;
     border: 25px solid; /* As 4 bordas sólidas com 25px de espessura */
-    border-color: #32CD32;
+    border-color:  var(--ion-color-primary);
     margin: 5px auto;
 }
 
@@ -51,3 +53,4 @@ ion-icon{
     text-align: center;
     margin: 10px auto;
 }
+

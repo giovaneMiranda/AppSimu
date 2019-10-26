@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Userbd } from '../interfaces/userbd';
-import { AlertController } from '@ionic/angular';
-
+import { AlertController, ModalController } from '@ionic/angular';
+import { CompraComponent } from '../compra/compra.component';
 
 
 @Component({
@@ -15,10 +16,13 @@ export class DetalheAcaoPage implements OnInit {
   comp: boolean;
   vend: boolean;
   public dataUser: Userbd;
+  dataFromModal;
 
   constructor(private authService: AuthService, 
               private afs: AngularFirestore,
-              private alertController: AlertController) { 
+              private alertController: AlertController,
+              private  modalController: ModalController) { 
+                
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
         this.afs.collection('User')
@@ -34,47 +38,36 @@ export class DetalheAcaoPage implements OnInit {
   ngOnInit() {
   }
 
- compra() {
-      if (this.comp == true){
-        this.comp = false;
-      }else{
-        this.comp = true;
-        this.vend = false;
-      }
-  }
-
-  venda() {
-    if (this.vend == true){
-      this.vend = false;
-    }else{
-      this.comp = false;
-      this.vend = true;
-
-
-
-
-
-
-    }
-  }
-
   savemoney(doc) {
     this.dataUser = doc;
   }
 
-  async presentAlertConfirm() {
+
+
+  
+  async PopUpCompra() {
     const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
+      header: 'Compra',
       inputs: [
         {
-          name: 'username',
-          placeholder: 'Username'
+          type: 'radio',
+          label: 'Mercado',
+          value: '0'
         },
         {
-          name: 'password',
-          placeholder: 'Password',
-          type: 'password'
+          type: 'radio',
+          label: 'Limitado',
+          value: '1'
+        },
+        {
+          name: 'quantidade',
+          placeholder: 'Quantidade',
+          type: 'number'
+        },
+        {
+          name: 'valor',
+          placeholder: 'Valor',
+          type: 'number'
         }
       ],
       buttons: [
@@ -85,7 +78,8 @@ export class DetalheAcaoPage implements OnInit {
           handler: (blah) => {
             console.log('Confirm Cancel: blah');
           }
-        }, {
+        }, 
+        {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
@@ -97,6 +91,13 @@ export class DetalheAcaoPage implements OnInit {
     await alert.present();
     let result = await alert.onDidDismiss();
     console.log(result);
+  }
+
+  async compra() {
+    const modal = await this.modalController.create({
+      component: CompraComponent,
+    });
+    return await modal.present();
   }
 
 }

@@ -2,11 +2,9 @@
   <ion-header>
 
       <ion-toolbar mode="ios">
-          <ion-buttons>
-            <ion-button routerLink="/home" slot="secondary">
-              <ion-icon slot="icon-only" name="home"></ion-icon>
-            </ion-button>
-          </ion-buttons>
+        <ion-buttons slot="start">
+          <ion-back-button color='light' defaultHref="/" mode="md"></ion-back-button>
+        </ion-buttons>
           <ion-title>
             R$ {{dataUser.dinheiro}}
           </ion-title>
@@ -31,8 +29,7 @@
 <div> 
     <section  class="but-div">
         <ion-button class="buttons" color="success" (click)="venda()" >Venda</ion-button>
-        <ion-button class="buttons" color="danger" (click)="presentAlertConfirm()" >Compra</ion-button> 
-        <!-- <ion-button class="buttons" color="danger" (click)="compra()" >Compra</ion-button> -->
+        <ion-button class="buttons" color="danger" (click)="compra()" >Compra</ion-button> 
     </section>
 </div>
 
@@ -55,18 +52,10 @@
           <ion-input></ion-input>
       </ion-item>
       <section  class="but-div">
-          <ion-button class="buttons" color="success" (click)="OkComp()" >Ok</ion-button>
-          <ion-button class="buttons" color="danger" (click)="CancelComp()" >Cancel</ion-button>
+          <ion-button class="buttons" size="large" color="success" (click)="OkComp()" >Ok</ion-button>
+          <ion-button class="buttons" size="large" color="danger" (click)="CancelComp()" >Cancel</ion-button>
       </section>
-<!--    </ion-content>
 
-  <ion-item>
-    <ion-range min="0" max="1000" pin color="secondary">
-      <ion-icon slot="start" name="arrow-back"></ion-icon>
-      <ion-icon slot="end" name="arrow-forward"></ion-icon>
-    </ion-range>
-  </ion-item>
-  -->
 </div>
 
 <div> <!--  Menu   -->
