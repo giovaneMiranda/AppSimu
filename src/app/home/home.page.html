@@ -9,27 +9,24 @@
   </ion-toolbar>
 <!-- cabecalho!!!!!!!!!!!!!!!! -->
 
-  <ion-content class="master">
+<ion-content class="master">
+  <div class="ccontainer top">
 
-<div class="ion-padding">
-    <ion-button class="ion-margin-top" (click)="ordem()" color="primary" >
-        <ion-icon name="bookmarks"></ion-icon>
-        <ion-title>APRENDER</ion-title>
-    </ion-button>
-</div>
+        <ion-button class="ion-margin-top" routerLink="/toolbar/aprender" color="primary" >
+            <ion-icon name="bookmarks"></ion-icon>
+            <ion-title>APRENDER</ion-title>
+        </ion-button>
 
-<div class="ion-padding">
-    <ion-button class="ion-margin-top" (click)="ordem()" color="primary" >
-        <ion-icon name="trending-up"></ion-icon>
-        <ion-title>JOGAR</ion-title>
-    </ion-button>
-</div>
+        <ion-button class="ion-margin-top" routerLink="/toolbar/consultaacao"color="primary" >
+            <ion-icon name="trending-up"></ion-icon>
+            <ion-title>JOGAR</ion-title>
+        </ion-button>
 
-<div class="ion-padding"> 
-    <ion-button class="ion-margin-top" (click)="ordem()" color="primary">
-        <ion-icon name="settings"></ion-icon>
-        <ion-title>CONFIGURAÇÃO</ion-title>
-    </ion-button>
-</div>   
-  </ion-content>
+        <ion-button class="ion-margin-top" routerLink="/toolbar/configuracao" color="primary">
+            <ion-icon name="settings"></ion-icon>
+            <ion-title>CONFIGURAÇÃO</ion-title>
+        </ion-button>
+
+  </div>
+</ion-content>
 

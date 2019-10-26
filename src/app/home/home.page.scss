@@ -22,4 +22,30 @@ ion-list p {
         font-size: small;
         color: #ffffff;
     }
+.centro {
+    display: inline-block;
+    margin: auto auto;
+    width: 75%;
 
+}
+.container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 75%;
+    margin: 0 auto;
+    z-index: 2;
+
+    &.top {
+        top: 5%;
+    }
+
+    &.bottom {
+        bottom: 30%;
+
+        span {
+            color: #fff;
+        }
+    }
+    
+}
