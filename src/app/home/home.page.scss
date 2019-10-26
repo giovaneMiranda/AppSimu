@@ -33,11 +33,11 @@ ion-list p {
     left: 0;
     right: 0;
     width: 75%;
-    margin: 0 auto;
+    margin: 0 auto ;
     z-index: 2;
 
     &.top {
-        top: 5%;
+        top: 25%;
     }
 
     &.bottom {
@@ -48,4 +48,8 @@ ion-list p {
         }
     }
     
+}
+.buttons{ 
+    text-align: center;
+    margin: 15px 15px;
 }
