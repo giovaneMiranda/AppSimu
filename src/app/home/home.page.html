@@ -1,30 +1,29 @@
 <!-- cabecalho!!!!!!!!!!!!!! -->
+<ion-header>
   <ion-toolbar mode="ios">
-
-    <ion-title >
-        <!--ion-icon name="wallet"></ion-icon-->     
-      <span>R$</span>
-    </ion-title>
-
+      <ion-title>
+        R$ {{dataUser.dinheiro}}
+      </ion-title>
   </ion-toolbar>
+</ion-header>
 <!-- cabecalho!!!!!!!!!!!!!!!! -->
 
-<ion-content class="master">
-  <div class="container top ion-padding">
+<ion-content class="master" >
+  <div class="container top" >
       <div>
-        <ion-button shape="round" mode="md" expand="block" class="ion-margin-top" routerLink="/toolbar/aprender" color="primary" >
+        <ion-button class="buttons" expand="block"  routerLink="/aprender" >
             <ion-icon name="bookmarks"></ion-icon>
             <ion-title>APRENDER</ion-title>
         </ion-button>
       </div>
       <div>
-        <ion-button shape="round" mode="md" expand="block" class="ion-margin-top" routerLink="/toolbar/consultaacao"color="primary" >
+        <ion-button class="buttons" expand="block" routerLink="/toolbar/consultaacao" >
             <ion-icon name="trending-up"></ion-icon>
             <ion-title>JOGAR</ion-title>
         </ion-button>
       </div>
       <div>
-        <ion-button shape="round"  mode="md" expand="block"   class="ion-margin-top" routerLink="/toolbar/configuracao" color="primary">
+        <ion-button class="buttons" expand="block" routerLink="/configuracao" >
             <ion-icon name="settings"></ion-icon>
             <ion-title>CONFIGURAÇÃO</ion-title>
         </ion-button>
