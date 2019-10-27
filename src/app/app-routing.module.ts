@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'toolbar', loadChildren: './toolbar/toolbar.module#ToolbarPageModule' },
   { path: 'consultaacao', loadChildren: './consultaacao/consultaacao.module#ConsultaacaoPageModule' },
   { path: 'carteira', loadChildren: './carteira/carteira.module#CarteiraPageModule' },
-  { path: 'ordem', loadChildren: './ordem/ordem.module#OrdemPageModule' },
+  { path: 'ordem', loadChildren: './ordem/ordem.module#OrdemPageModule' },  { path: 'configuracao', loadChildren: './configuracao/configuracao.module#ConfiguracaoPageModule' },
+
 
 
 
