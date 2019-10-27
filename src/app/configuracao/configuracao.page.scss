@@ -1,0 +1,40 @@
+ion-toolbar{
+    --background:var(--ion-color-primary);
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    
+    ion-icon {
+    color: #ffffff;
+    }
+}
+
+.buttons{ 
+    margin: 35px auto;
+    width: auto;
+    height: auto ;
+    font-size: 20px;
+    outline-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 75%;
+    margin: 0 auto ;
+    z-index: 2;
+
+    &.top {
+        top: 30%;
+    }   
+    &.bottom {
+        bottom: 25%;
+
+        span {
+            color: #fff;
+        }
+    } 
+}
