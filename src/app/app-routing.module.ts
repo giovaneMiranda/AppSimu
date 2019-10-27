@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'consultaacao', loadChildren: './consultaacao/consultaacao.module#ConsultaacaoPageModule' },
   { path: 'carteira', loadChildren: './carteira/carteira.module#CarteiraPageModule' },
   { path: 'ordem', loadChildren: './ordem/ordem.module#OrdemPageModule' },
+  { path: 'configuracao', loadChildren: './configuracao/configuracao.module#ConfiguracaoPageModule' },
 
 
 

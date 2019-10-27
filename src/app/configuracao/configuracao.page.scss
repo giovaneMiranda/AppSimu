@@ -9,20 +9,15 @@ ion-toolbar{
     }
 }
 
-ion-icon{
-    font-size: 40px;  
-    --ion-color-secondary: #47525E;
-    }
-
-.master{
-    --ion-background-color:  var(--ion-color-primary);
-} 
 .buttons{ 
-    margin: 25px auto;
-    width: 100%;
-    height: 120% ;
-    font-size: 10px;
+    margin: 35px auto;
+    width: auto;
+    height: auto ;
+    font-size: 20px;
     outline-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 .container {
     position: absolute;
@@ -33,10 +28,10 @@ ion-icon{
     z-index: 2;
 
     &.top {
-        top: 25%;
+        top: 30%;
     }   
     &.bottom {
-        bottom: 30%;
+        bottom: 25%;
 
         span {
             color: #fff;
