@@ -1,0 +1,36 @@
+.master{
+    --ion-background-color:  var(--ion-color-secondary);
+    color: #ffffff;
+    font-size: 10px;
+    text-align: center;
+}
+
+ion-toolbar{
+    --background: var(--ion-color-secondary);
+    color: #ffffff;
+    font-size: 10px;
+    text-align: center;
+
+    ion-icon {
+    color: #ffffff;
+    }
+    
+}
+
+ion-icon{
+    font-size: 30px;  
+    }
+
+.buttons{ 
+    text-align: center;
+    width: 40%;
+    margin: 15px 15px; 
+}
+
+.my-custom-modal-css 
+.modal-wrapper {
+    height: 20%;
+    top: 80%;
+    position: absolute; 
+    display: block;  
+ }

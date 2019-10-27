@@ -14,11 +14,19 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { Keyboard } from '@ionic-native/keyboard/ngx'
+import { ModalPageModule } from './detalheacao/modal/modal.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(environment.fireBaseConfig),AngularFireAuthModule,AngularFirestoreModule,AngularFireDatabaseModule],
+  imports: [BrowserModule, 
+            IonicModule.forRoot(), 
+            AppRoutingModule,
+            AngularFireModule.initializeApp(environment.fireBaseConfig),
+            AngularFireAuthModule,AngularFirestoreModule,
+            AngularFireDatabaseModule,
+            ModalPageModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

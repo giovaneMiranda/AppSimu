@@ -1,0 +1,37 @@
+
+
+<ion-content class="master">
+    <ion-list>
+        <ion-item>
+          <ion-radio-group>
+            <ion-list-header>
+              <ion-label color="light">Tipo de Ordem</ion-label>
+                </ion-list-header>
+                <ion-item>
+                  <ion-label color="light">Mercado</ion-label>
+                  <ion-radio slot="start" color="light" value="mercado"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="light">Limitado</ion-label>
+                  <ion-radio slot="start" color="light" value="limitado"></ion-radio>
+                </ion-item>
+        </ion-radio-group>
+      </ion-item>
+      </ion-list>
+      <ion-item>
+          <ion-label position="floating" color="light">Quantidade</ion-label>
+          <ion-input type="number" color="light"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating" color="light">Valor</ion-label>
+          <ion-input type="number" color="light"></ion-input>
+      </ion-item>
+      <ion-footer>
+          <ion-toolbar>
+            <section>
+              <ion-button class="buttons" color="danger" (click)="closeModal()" >Cancel</ion-button>
+              <ion-button class="buttons" color="success">Ok</ion-button> 
+          </section>
+          </ion-toolbar>
+        </ion-footer>
+</ion-content>

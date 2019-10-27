@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Userbd } from '../interfaces/userbd';
 import { AlertController, ModalController } from '@ionic/angular';
-import { CompraComponent } from '../compra/compra.component';
+import { ModalPage } from '../detalheacao/modal/modal.page'
 
 
 @Component({
@@ -17,11 +17,10 @@ export class DetalheAcaoPage implements OnInit {
   comp: boolean;
   vend: boolean;
   public dataUser: Userbd;
-  dataFromModal;
+  value = 0;
 
   constructor(private authService: AuthService, 
               private afs: AngularFirestore,
-              private alertController: AlertController,
               private  modalController: ModalController) { 
                 
     this.authService.getAuth().onAuthStateChanged(user => {
@@ -43,59 +42,15 @@ export class DetalheAcaoPage implements OnInit {
     this.dataUser = doc;
   }
 
-  async PopUpCompra() {
-    const alert = await this.alertController.create({
-      header: 'Compra',
-      inputs: [
-        {
-          type: 'radio',
-          label: 'Mercado',
-          value: '0'
-        },
-        {
-          type: 'radio',
-          label: 'Limitado',
-          value: '1'
-        },
-        {
-          name: 'quantidade',
-          placeholder: 'Quantidade',
-          type: 'number'
-        },
-        {
-          name: 'valor',
-          placeholder: 'Valor',
-          type: 'number'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, 
-        {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-  
-    await alert.present();
-    let result = await alert.onDidDismiss();
-    console.log(result);
-  }
-
   async compra() {
-    const modal = await this.modalController.create({
-      component: CompraComponent,
+     const modal = await this.modalController.create({
+      component: ModalPage,
+      cssClass: '.my-custom-modal-css',
+      componentProps:{
+        costum_id: this.value
+      }
     });
-    return await modal.present();
+    modal.present(); 
   }
 
 }
