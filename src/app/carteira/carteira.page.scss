@@ -1,9 +1,18 @@
 
   ion-header{
 
-   ion-toolbar {
+   .md ion-toolbar {
+    --background:var(--ion-color-primary);
+   
+
+    
+}
+
+.ios ion-toolbar {
     --background:var(--ion-color-primary);
     padding-top: 11%!important;
+
+    
 }
 
 } 
