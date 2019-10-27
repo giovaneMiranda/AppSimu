@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,NgZone } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private menu: MenuController) { }
+  constructor(private menu: MenuController, private NgZone: NgZone) { }
 
   openFirst() {
     this.menu.enable(true, 'first');

@@ -32,12 +32,12 @@ ion-icon{
     
 }
 
-.graf {
+#graf {
     width: 100%;
     height: 70% ;
     text-align: center;
-    border: 25px solid; /* As 4 bordas sólidas com 25px de espessura */
-    border-color:  var(--ion-color-primary);
+   background-color: var(--ion-color-secondary-shade);
+    
     margin: 5px auto;
 }
 
