@@ -1,0 +1,44 @@
+ion-header{
+
+    .md ion-toolbar {
+     --background:var(--ion-color-primary);
+    
+ 
+     
+ }
+ 
+ .ios ion-toolbar {
+     --background:var(--ion-color-primary);
+     padding-top: 11%!important;
+ 
+     
+ }
+ 
+ } 
+  ion-toolbar {
+     --background:var(--ion-color-secondary);
+     padding-bottom: 0px!important;
+    
+ 
+     padding-top: 3%!important;
+ 
+}
+
+
+
+.master{
+    --ion-background-color:  var(--ion-color-secondary);
+
+    .listativos{
+     text-align: center;
+     border-bottom: 1px solid white;
+     color: var(--ion-color-primary);
+ }
+}
+
+.sc-ion-searchbar-ios-h{
+    --background: white !important;
+        
+}
+
+ 
