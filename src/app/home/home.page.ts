@@ -5,6 +5,9 @@ import { Userbd } from '../interfaces/userbd';
 import { OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import {  ToolbarPage } from '../toolbar/toolbar.page'; 
+
 
 
 
@@ -18,14 +21,15 @@ export class HomePage implements OnInit {
   vend: boolean;
   public dataUser: Userbd;
 
-
+  toolbar: ToolbarPage
  
 
   constructor(private menu: MenuController,
     private authService: AuthService,
     private afs: AngularFirestore,
     private modalController: ModalController,
-    private zone: NgZone) { 
+    private zone: NgZone,
+    private router: Router) { 
       this.authService.getAuth().onAuthStateChanged(user => {
         if (user) {
           this.afs.collection('User')
@@ -59,4 +63,10 @@ export class HomePage implements OnInit {
     this.dataUser = doc;
   }
 
+
+jogarButton(){
+  this.zone.runOutsideAngular(() => {
+   this.router.navigate(['/toolbar']);
+});
+}
 }
