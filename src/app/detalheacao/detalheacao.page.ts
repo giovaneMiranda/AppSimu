@@ -4,11 +4,16 @@ import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Userbd } from '../interfaces/userbd';
 import { AlertController, ModalController } from '@ionic/angular';
-import { CompraComponent } from '../compra/compra.component';
+
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 am4core.useTheme(am4themes_animated);
+
+import { ModalPage } from '../detalheacao/modal/modal.page'
+
+
+
 @Component({
   selector: 'app-detalheacao',
   templateUrl: './detalheacao.page.html',
@@ -19,15 +24,20 @@ export class DetalheAcaoPage implements OnInit {
   comp: boolean;
   vend: boolean;
   public dataUser: Userbd;
+
   dataFromModal;
   private chart: am4charts.XYChart;
-  
+  value = 0;
   constructor(private authService: AuthService, 
               private afs: AngularFirestore,
               private alertController: AlertController,
               private  modalController: ModalController,
               private zone : NgZone
               ) { 
+
+  
+
+ 
                 
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
@@ -432,59 +442,15 @@ chart.data = [ {
     this.dataUser = doc;
   }
 
-  async PopUpCompra() {
-    const alert = await this.alertController.create({
-      header: 'Compra',
-      inputs: [
-        {
-          type: 'radio',
-          label: 'Mercado',
-          value: '0'
-        },
-        {
-          type: 'radio',
-          label: 'Limitado',
-          value: '1'
-        },
-        {
-          name: 'quantidade',
-          placeholder: 'Quantidade',
-          type: 'number'
-        },
-        {
-          name: 'valor',
-          placeholder: 'Valor',
-          type: 'number'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, 
-        {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-  
-    await alert.present();
-    let result = await alert.onDidDismiss();
-    console.log(result);
-  }
-
   async compra() {
-    const modal = await this.modalController.create({
-      component: CompraComponent,
+     const modal = await this.modalController.create({
+      component: ModalPage,
+      cssClass: '.my-custom-modal-css',
+      componentProps:{
+        costum_id: this.value
+      }
     });
-    return await modal.present();
+    modal.present(); 
   }
 
 }
