@@ -12,6 +12,7 @@ import { CompraComponent } from '../compra/compra.component';
   templateUrl: './detalheacao.page.html',
   styleUrls: ['./detalheacao.page.scss'],
 })
+
 export class DetalheAcaoPage implements OnInit {
   comp: boolean;
   vend: boolean;
@@ -42,9 +43,6 @@ export class DetalheAcaoPage implements OnInit {
     this.dataUser = doc;
   }
 
-
-
-  
   async PopUpCompra() {
     const alert = await this.alertController.create({
       header: 'Compra',

@@ -12,7 +12,7 @@ describe('DetalheAcaoPage', () => {
       declarations: [ DetalheAcaoPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-    .compileComponents();
+    .compileComponents(); 
   }));
 
   beforeEach(() => {

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-compra',
   templateUrl: './compra.component.html',
   styleUrls: ['./compra.component.scss'],
-})
+}) 
 
 export class CompraComponent {
 
