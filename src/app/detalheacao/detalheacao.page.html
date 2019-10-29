@@ -20,7 +20,20 @@
     <p>
       Empresa
     </p>
-    <p text-center>Abertura Fechamento Alta Baixa</p>
+    <table style="width:100%">
+      <tr>
+        <th>Abertura</th>
+        <th>Fechamento</th> 
+        <th>Alta</th>
+        <th >Baixa</th>
+      <tr>
+        <td align="center">12</td>
+        <td align="center">13</td>
+        <td align="center">14</td>
+        <td align="center">15</td>
+      </tr>
+    </table>
+ 
   </div>
 
   <div id="graf" style="width: 100%"> <!-- Grafico -->
@@ -33,35 +46,5 @@
     </section>
 </div>
 
-<!-- 
-<div class="comp-div" *ngIf="comp">
-      <ion-list>
-        <ion-item>
-          <ion-label>Tipo de Ordem</ion-label>
-            <ion-select>
-              <ion-select-option value="mercado">Mercado</ion-select-option>
-              <ion-select-option value="limitado">Limitado</ion-select-option>
-            </ion-select>
-          </ion-item>
-      </ion-list>
-      <ion-item>
-          <ion-label position="floating">Quantidade</ion-label>
-          <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label position="floating">Valor</ion-label>
-          <ion-input></ion-input>
-      </ion-item>
-      <section  class="but-div">
-          <ion-button class="buttons" size="large" color="success" (click)="OkComp()" >Ok</ion-button>
-          <ion-button class="buttons" size="large" color="danger" (click)="CancelComp()" >Cancel</ion-button>
-      </section>
-
-</div>
-
-<div>  Menu  
-
-
-</div> -->
 
 </ion-content>

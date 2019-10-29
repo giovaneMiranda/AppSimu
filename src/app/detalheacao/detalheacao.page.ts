@@ -445,7 +445,7 @@ chart.data = [ {
   async compra() {
      const modal = await this.modalController.create({
       component: ModalPage,
-      cssClass: '.my-custom-modal-css',
+      cssClass: 'modalCss',
       componentProps:{
         costum_id: this.value
       }
