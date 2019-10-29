@@ -1,7 +1,7 @@
-<ion-header >
+<ion-header>
 
   <!-- cabecalho!!!!!!!!!!!!!! -->
-  <ion-toolbar  mode="ios">
+  <ion-toolbar mode="ios">
     <ion-buttons>
 
 
@@ -53,7 +53,7 @@
       </ion-list-header> -->
 
 
-    <ion-item mode="ios" *ngFor="let acao of acaoList" button [routerLink]="['/detalheacao']">
+    <ion-item mode="ios" *ngFor="let acao of acaoList" button (click)="getDetalheAcao()">
 
 
       <ion-label mode="ios" class="infoAcao">

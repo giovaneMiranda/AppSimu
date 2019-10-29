@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Acao } from '../interfaces/acao';
 import { Subscription } from 'rxjs';
 import { CarteiraService } from '../services/carteira.service';
+import { LoadingController, ToastController, IonSlides } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carteira',
@@ -14,10 +16,14 @@ export class CarteiraPage implements OnInit {
   private acaoList = new Array<Acao>();
   private acaoSub: Subscription
   private userId;
+  private loading: any;
 
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
-    private carteiraService: CarteiraService) {
+    private carteiraService: CarteiraService,
+    private loadingController: LoadingController,
+    private toastController: ToastController,
+    private router: Router) {
 
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
@@ -36,5 +42,22 @@ export class CarteiraPage implements OnInit {
 
   }
   ngOnInit() {
+  }
+
+  async getDetalheAcao() {
+    await this.presentLoading();
+    try {
+      this.router.navigate(['/detalheacao']);
+    }
+    finally {
+      this.loading.dismiss();
+    }
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Carregando...',
+    });
+    return this.loading.present();
   }
 }
