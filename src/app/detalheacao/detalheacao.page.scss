@@ -40,21 +40,18 @@ ion-icon{
     width: 100%;
     height: 70% ;
     text-align: center;
-   background-color: var(--ion-color-secondary-shade);
-    
+    background-color: var(--ion-color-secondary-shade);
     margin: 5px auto;
 }
 
-.comp-div{
-    width: 80%; 
-    height: 10%;
+table {
+    width: 60%;
+    border-collapse: collapse;
     text-align: center;
-    margin: 0px auto; 
-}
-
-.vend-div{
-    width: 80%;
-    text-align: center;
-    margin: 10px auto;
-}
-
+    table-layout: fixed;
+    font-size: 13px; 
+  }
+  td, th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

@@ -11,6 +11,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 am4core.useTheme(am4themes_animated);
 
 import { ModalPage } from '../detalheacao/modal/modal.page'
+import { Modal2Page } from '../detalheacao/modal2/modal2.page';
 
 
 
@@ -27,11 +28,10 @@ export class DetalheAcaoPage implements OnInit {
 
   dataFromModal;
   private chart: am4charts.XYChart;
-  value = 0;
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
-    private alertController: AlertController,
-    private modalController: ModalController,
+    private modal1: ModalController,
+    private modal2: ModalController,
     private zone: NgZone
   ) {
 
@@ -130,14 +130,19 @@ export class DetalheAcaoPage implements OnInit {
   }
 
   async compra() {
-    const modal = await this.modalController.create({
+    const modal = await this.modal1.create({
       component: ModalPage,
-      cssClass: 'modalCss',
-      componentProps:{
-        costum_id: this.value
-      }
+      cssClass: 'modalCompra',
     });
     modal.present();
+  }
+
+  async venda() {
+    const modal2 = await this.modal2.create({
+      component: Modal2Page,
+      cssClass: 'modalVenda',
+    });
+    modal2.present();
   }
 
 }

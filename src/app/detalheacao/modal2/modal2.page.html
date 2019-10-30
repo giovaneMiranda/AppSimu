@@ -1,0 +1,32 @@
+
+
+<ion-content class="master">
+  <ion-item>
+    <ion-label color="light">Ordem de Venda</ion-label>
+    <ion-select style="color:white">
+      <ion-select-option value="mercado">Mercado</ion-select-option>
+      <ion-select-option value="loss">Stop Loss</ion-select-option>
+      <ion-select-option value="gain">Stop Gain</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" color="light">Quantidade</ion-label>
+    <ion-input type="number" color="light"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" color="light">Valor Stop Loss</ion-label>
+    <ion-input type="number" color="light"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" color="light">Valor Stop Gain</ion-label>
+    <ion-input type="number" color="light"></ion-input>
+  </ion-item>
+  <ion-footer>
+    <ion-toolbar>
+      <section>
+        <ion-button class="buttons" color="danger" (click)="closeModal()" >Cancel</ion-button>
+        <ion-button class="buttons" color="success" (click)="okModal()">Ok</ion-button> 
+      </section>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

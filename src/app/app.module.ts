@@ -15,6 +15,7 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { Keyboard } from '@ionic-native/keyboard/ngx'
 import { ModalPageModule } from './detalheacao/modal/modal.module';
+import { Modal2PageModule } from './detalheacao/modal2/modal2.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,8 @@ import { ModalPageModule } from './detalheacao/modal/modal.module';
             AngularFireModule.initializeApp(environment.fireBaseConfig),
             AngularFireAuthModule,AngularFirestoreModule,
             AngularFireDatabaseModule,
-            ModalPageModule
+            ModalPageModule,
+            Modal2PageModule
   ],
   providers: [
     StatusBar,

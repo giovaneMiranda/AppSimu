@@ -18,4 +18,9 @@ closeModal(){
   this.modalControler.dismiss();
 }
 
+okModal(){
+  //salvar infos no banco
+  this.modalControler.dismiss();
+}
+
 }
