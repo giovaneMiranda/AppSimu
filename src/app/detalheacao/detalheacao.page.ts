@@ -58,8 +58,10 @@ export class DetalheAcaoPage implements OnInit {
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
       let chart = am4core.create("graf", am4charts.XYChart);
+      chart.responsive.enabled = true;
 
-      chart.dataSource.url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=15min&apikey=OEY3540OQVKYKIWL&datatype=csv";
+
+      chart.dataSource.url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=30min&apikey=OEY3540OQVKYKIWL&datatype=csv";
       chart.dataSource.parser = new am4core.CSVParser();
 
 
@@ -70,8 +72,16 @@ export class DetalheAcaoPage implements OnInit {
 
       let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
       dateAxis.renderer.grid.template.location = 0;
+      dateAxis.baseInterval = {
+        "timeUnit": "minute",
+        "count": 30
+      }
+
+      //dateAxis.skipEmptyPeriods = true;
+      //dateAxis.dateFormats.setKey("day", "yyyy-MM-dd HH:mm:ss");
 
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      valueAxis.strictMinMax = true;
       valueAxis.tooltip.disabled = true;
 
 
@@ -104,14 +114,12 @@ export class DetalheAcaoPage implements OnInit {
 
       let scrollbarX = new am4charts.XYChartScrollbar();
       scrollbarX.series.push(lineSeries);
+
       chart.scrollbarX = scrollbarX;
 
-
-
-
-
-
-
+      // chart.events.on("inited", function (ev) {
+      //   dateAxis.zoomToDates(new Date(2019, 10, 29), new Date(2019, 10, 30));
+      // });
 
       this.chart = chart;
     });
