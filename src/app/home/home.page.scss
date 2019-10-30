@@ -17,12 +17,34 @@ ion-icon{
 .master{
     --ion-background-color:  var(--ion-color-primary);
 } 
+
 .buttons{ 
     margin: 25px auto;
     width: 100%;
     height: 120% ;
-    font-size: 10px;
+    
     outline-style: none;
+    text-align:center;
+    
+    ion-icon{
+        font-size: 50px;
+        color: white;
+        background: var(--ion-color-secondary);
+        border-radius: 10%;
+        padding: 2%;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-shadow: 3px 3px var(--ion-color-primary-shade);
+    }
+    ion-title{
+       font-size:110%;
+        text-shadow: 3px 3px var(--ion-color-primary-shade);
+    text-align: center;
+        display: contents;
+      
+        
+    }
+  
 }
 .container {
     position: absolute;
@@ -30,10 +52,10 @@ ion-icon{
     right: 0;
     width: 75%;
     margin: 0 auto ;
-    z-index: 2;
+   
 
     &.top {
-        top: 25%;
+        top: 20%;
     }   
     &.bottom {
         bottom: 30%;
