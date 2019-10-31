@@ -5,9 +5,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Userbd } from '../interfaces/userbd';
 import { AlertController, ModalController } from '@ionic/angular';
 
-import * as am4core from "@amcharts/amcharts4/core";
+
+import *  as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
+
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+
 am4core.useTheme(am4themes_animated);
 
 import { ModalPage } from '../detalheacao/modal/modal.page'
@@ -32,7 +35,8 @@ export class DetalheAcaoPage implements OnInit {
     private afs: AngularFirestore,
     private modal1: ModalController,
     private modal2: ModalController,
-    private zone: NgZone
+    private zone: NgZone,
+
   ) {
 
 
@@ -57,34 +61,36 @@ export class DetalheAcaoPage implements OnInit {
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
+
+
       let chart = am4core.create("graf", am4charts.XYChart);
-      chart.responsive.enabled = true;
-
-
-      chart.dataSource.url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=30min&apikey=OEY3540OQVKYKIWL&datatype=csv";
-      chart.dataSource.parser = new am4core.CSVParser();
-
-
-      // ... chart code goes here ...
       chart.paddingRight = 20;
+      am4core.options.minPolylineStep = 10;
+
+      chart.dataSource.url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=15min&outputsize=compact&apikey=OEY3540OQVKYKIWL&datatype=csv";
+      chart.dataSource.parser = new am4core.CSVParser();
+      chart.dataSource.parser.options['reverse'] = true;
+      chart.dataSource.parser.options['skipRows'] = 1;
+
+
+
+      chart.leftAxesContainer.layout = "vertical"
 
       chart.dateFormatter.inputDateFormat = "yyyy-MM-dd HH:mm:ss";
 
       let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-      dateAxis.renderer.grid.template.location = 0;
+      //dateAxis.renderer.grid.template.location = 0;
+
       dateAxis.baseInterval = {
         "timeUnit": "minute",
-        "count": 30
-      }
+        "count": 15
+      };
+      dateAxis.skipEmptyPeriods = true;
+      dateAxis.dateFormats.setKey("day", "MMM dd");
 
-      //dateAxis.skipEmptyPeriods = true;
-      //dateAxis.dateFormats.setKey("day", "yyyy-MM-dd HH:mm:ss");
 
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.strictMinMax = true;
       valueAxis.tooltip.disabled = true;
-
-
 
       let series = chart.series.push(new am4charts.CandlestickSeries());
       series.dataFields.dateX = "col0";
@@ -93,9 +99,7 @@ export class DetalheAcaoPage implements OnInit {
       series.dataFields.lowValueY = "col3";
       series.dataFields.highValueY = "col2";
       series.simplifiedProcessing = true;
-      series.tooltipText = "Open:${openValueY.value}\nLow:${lowValueY.value}\nHigh:${highValueY.value}\nClose:${valueY.value}";
-
-
+      series.tooltipText = "Open:R${openValueY.value}\nLow:R${lowValueY.value}\nHigh:R${highValueY.value}\nClose:R${valueY.value}";
 
       chart.cursor = new am4charts.XYCursor();
 
@@ -106,22 +110,18 @@ export class DetalheAcaoPage implements OnInit {
       // need to set on default state, as initially series is "show"
       lineSeries.defaultState.properties.visible = false;
 
-
       // hide from legend too (in case there is one)
       lineSeries.hiddenInLegend = true;
       lineSeries.fillOpacity = 0.5;
       lineSeries.strokeOpacity = 0.5;
 
-      let scrollbarX = new am4charts.XYChartScrollbar();
-      scrollbarX.series.push(lineSeries);
+      let scrollbarX = new am4core.Scrollbar();;
 
       chart.scrollbarX = scrollbarX;
-
-      // chart.events.on("inited", function (ev) {
-      //   dateAxis.zoomToDates(new Date(2019, 10, 29), new Date(2019, 10, 30));
-      // });
-
+      dateAxis.start = 0.7;
+      dateAxis.keepSelection = true;
       this.chart = chart;
+
     });
   }
 
