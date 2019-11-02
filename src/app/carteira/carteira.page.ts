@@ -44,10 +44,10 @@ export class CarteiraPage implements OnInit {
   ngOnInit() {
   }
 
-  async getDetalheAcao() {
+  async getDetalheAcao(acao) {
     await this.presentLoading();
     try {
-      this.router.navigate(['/detalheacao']);
+      this.router.navigate(['/detalheacao', acao]);
     }
     finally {
       this.loading.dismiss();
