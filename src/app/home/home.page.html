@@ -11,7 +11,7 @@
 <ion-content class="master">
   <div class="container top">
     <div>
-      <ion-button mode="ios" class="buttons" expand="block" routerLink="/aprender">
+      <ion-button mode="ios" class="buttons" expand="block" (click)="aprenderButton()" >
         <ion-icon mode="ios" name="bookmarks"></ion-icon>
         <ion-title mode="ios">APRENDER</ion-title>
       </ion-button>
@@ -23,7 +23,7 @@
       </ion-button>
     </div>
     <div>
-      <ion-button mode="ios" class="buttons" expand="block" routerLink="/configuracao">
+      <ion-button mode="ios" class="buttons" expand="block" (click)="configuracaoButton()" >
         <ion-icon mode="ios" name="cog"></ion-icon>
         <ion-title mode="ios">CONFIGURAÇÃO</ion-title>
       </ion-button>

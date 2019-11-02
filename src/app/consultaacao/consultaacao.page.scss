@@ -33,7 +33,28 @@ ion-header{
      text-align: center;
      border-bottom: 1px solid white;
      color: var(--ion-color-primary);
- }
+    }
+
+    .cabecalholist{
+        color: var(--ion-color-primary-contrast);
+        border-bottom: 1px solid white;
+        text-align: left;
+    }
+
+    .infoimpresa {
+
+
+        .simimpresa p{
+            color: var(--ion-color-primary);
+            text-align: left;          
+        }
+
+        .nomeimpresa p{
+            color: var(--ion-color-primary-contrast);
+            text-align: left;
+        }
+     }
+
 }
 
 .sc-ion-searchbar-ios-h{

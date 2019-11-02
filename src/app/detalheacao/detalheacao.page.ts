@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Userbd } from '../interfaces/userbd';
 import { AlertController, ModalController } from '@ionic/angular';
-
+import { ActivatedRoute } from '@angular/router';
 
 import *  as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -15,6 +15,7 @@ am4core.useTheme(am4themes_animated);
 
 import { ModalPage } from '../detalheacao/modal/modal.page'
 import { Modal2Page } from '../detalheacao/modal2/modal2.page';
+import { OrdemCompra } from '../interfaces/ordem-compra';
 
 
 
@@ -28,14 +29,18 @@ export class DetalheAcaoPage implements OnInit {
   comp: boolean;
   vend: boolean;
   public dataUser: Userbd;
-
+  private idAcao: String = null;
   dataFromModal;
   private chart: am4charts.XYChart;
+  private ordemCompra: OrdemCompra;
+  
+
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
     private modal1: ModalController,
     private modal2: ModalController,
     private zone: NgZone,
+    private activatedRoute: ActivatedRoute,
 
   ) {
 
@@ -53,9 +58,12 @@ export class DetalheAcaoPage implements OnInit {
           });
       }
     });
+
+    this.idAcao = this.activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
+    
   }
 
 
@@ -67,12 +75,14 @@ export class DetalheAcaoPage implements OnInit {
       chart.paddingRight = 20;
       am4core.options.minPolylineStep = 10;
 
-      chart.dataSource.url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=15min&outputsize=compact&apikey=OEY3540OQVKYKIWL&datatype=csv";
+      chart.dataSource.url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + this.idAcao + "&interval=15min&outputsize=compact&apikey=OEY3540OQVKYKIWL&datatype=csv";
       chart.dataSource.parser = new am4core.CSVParser();
       chart.dataSource.parser.options['reverse'] = true;
       chart.dataSource.parser.options['skipRows'] = 1;
-
-
+      chart.dataSource.updateCurrentData = true;
+      chart.dataSource.reloadFrequency = 150000;
+      
+     
 
       chart.leftAxesContainer.layout = "vertical"
 
@@ -121,7 +131,7 @@ export class DetalheAcaoPage implements OnInit {
       dateAxis.start = 0.7;
       dateAxis.keepSelection = true;
       this.chart = chart;
-
+     
     });
   }
 
