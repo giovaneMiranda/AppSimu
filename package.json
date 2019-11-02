@@ -29,6 +29,7 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.1.0",
     "cordova-browser": "6.0.0",
+    "cordova-plugin-advanced-http": "^2.2.0",
     "cordova-plugin-firebase": "^2.0.5",
     "cordova-plugin-firebase-config": "^3.0.0",
     "core-js": "^2.5.4",
@@ -79,7 +80,8 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-firebase": {},
-      "cordova-plugin-firebase-config": {}
+      "cordova-plugin-firebase-config": {},
+      "cordova-plugin-advanced-http": {}
     },
     "platforms": [
       "browser"

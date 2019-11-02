@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
   private userId: String
   @ViewChild(IonSlides) slides: IonSlides;
 
-  constructor( 
+  constructor(
     private loadingController: LoadingController,
     private toastController: ToastController,
     private authService: AuthService,

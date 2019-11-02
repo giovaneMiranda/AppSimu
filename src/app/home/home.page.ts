@@ -1,12 +1,12 @@
 
-import { Component,NgZone } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
 import { Userbd } from '../interfaces/userbd';
 import { OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import {  ToolbarPage } from '../toolbar/toolbar.page'; 
+import { ToolbarPage } from '../toolbar/toolbar.page';
 
 
 
@@ -22,30 +22,30 @@ export class HomePage implements OnInit {
   public dataUser: Userbd;
 
   toolbar: ToolbarPage
- 
+
 
   constructor(private menu: MenuController,
     private authService: AuthService,
     private afs: AngularFirestore,
     private modalController: ModalController,
     private zone: NgZone,
-    private router: Router) { 
-      this.authService.getAuth().onAuthStateChanged(user => {
-        if (user) {
-          this.afs.collection('User')
-            .doc(user.uid)
-            .valueChanges()
-            .subscribe(docUser => {
-              this.savemoney(docUser)
-            });
-          }
-        });
-    }
+    private router: Router) {
+    this.authService.getAuth().onAuthStateChanged(user => {
+      if (user) {
+        this.afs.collection('User')
+          .doc(user.uid)
+          .valueChanges()
+          .subscribe(docUser => {
+            this.savemoney(docUser)
+          });
+      }
+    });
+  }
 
 
   ngOnInit() {
   }
-  
+
   openFirst() {
     this.menu.enable(true, 'first');
     this.menu.open('first');
@@ -63,10 +63,21 @@ export class HomePage implements OnInit {
     this.dataUser = doc;
   }
 
+  jogarButton() {
+    this.zone.runOutsideAngular(() => {
+      this.router.navigate(['/toolbar']);
+    });
+  }
+  AprenderButton(){
+    this.zone.runOutsideAngular(() => {
+      this.router.navigate(['/aprender']);
+    });
 
-jogarButton(){
-  this.zone.runOutsideAngular(() => {
-   this.router.navigate(['/toolbar']);
-});
+  }
+  configuracaoButton(){
+    this.zone.runOutsideAngular(() => {
+      this.router.navigate(['/configuracao']);
+    });
+  }
 }
-}
+
