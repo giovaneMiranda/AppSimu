@@ -1,7 +1,7 @@
 import { Timestamp } from 'rxjs';
 
 export interface Acao {
-    id?: String
+    id?: string
     dataCompra?: number;
     quantidade?: number;
     valorCompra?: number;
