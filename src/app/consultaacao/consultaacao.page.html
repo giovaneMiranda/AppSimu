@@ -1,31 +1,151 @@
-<ion-header >
+<ion-header>
 
-    <!-- cabecalho!!!!!!!!!!!!!! -->
-    <ion-toolbar class="cabecalho" mode="ios">
-      <ion-buttons>
-  
-  
-      </ion-buttons>
-      <ion-title>
-  
-  
-      </ion-title>
-  
-  
-    </ion-toolbar>
+  <!-- cabecalho!!!!!!!!!!!!!! -->
+  <ion-toolbar class="cabecalho" mode="ios">
+    <ion-buttons>
+
+
+    </ion-buttons>
+    <ion-title>
+
+    </ion-title>
+
+
+  </ion-toolbar>
 </ion-header>
 
 <ion-toolbar class="filter" mode="ios">
   <ion-searchbar mode="ios"></ion-searchbar>
-</ion-toolbar>  
+</ion-toolbar>
 
 <ion-content fullscreen class="master">
 
   <div class="listativos">
     <h4>Ativos</h4>
   </div>
+
   <div>
-    
+    <table style="width:100%">
+      <tr class="cabecalholist">
+        <th>
+          <p>&emsp;Símbolo</p>
+        </th>
+        <th>
+          <p>Nome</p>
+        </th>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <ion-list mode="ios">
+      <ion-item mode="ios" button (click)="getDetalheAcao('PETR4.SA')">
+        <ion-label mode="ios" class="infoimpresa">
+          <table style="width:100%">
+            <tr>
+              <th class="simimpresa">
+                <p>PETR4.SA</p>
+              </th>
+              <th class="nomeimpresa">
+                <p>Petroleo Brasileiro S.A.<br /> - Petrobras</p>
+              </th>
+            </tr>
+          </table>
+        </ion-label>
+      </ion-item>
+
+      <ion-item mode="ios" button (click)="getDetalheAcao('OIBR3.SA')">
+        <ion-label mode="ios" class="infoimpresa">
+          <table style="width:100%">
+            <tr>
+              <th class="simimpresa">
+                <p>OIBR3.SA</p>
+              </th>
+              <th class="nomeimpresa">
+                <p>OI S.A.</p>
+              </th>
+            </tr>
+          </table>
+        </ion-label>
+      </ion-item>
+
+      <ion-item mode="ios" button (click)="getDetalheAcao('VVAR3.SA')">
+        <ion-label mode="ios" class="infoimpresa">
+          <table style="width:100%">
+            <tr>
+              <th class="simimpresa">
+                <p>VVAR3.SA</p>
+              </th>
+              <th class="nomeimpresa">
+                <p>Via Varejo S.A</p>
+              </th>
+            </tr>
+          </table>
+        </ion-label>
+      </ion-item>
+
+      <ion-item mode="ios" button (click)="getDetalheAcao('ITSA4.SA')">
+        <ion-label mode="ios" class="infoimpresa">
+          <table style="width:100%">
+            <tr>
+              <th class="simimpresa">
+                <p>ITSA4.SA</p>
+              </th>
+              <th class="nomeimpresa">
+                <p>Itausa - Investimentos Itau S.A.</p>
+              </th>
+            </tr>
+          </table>
+        </ion-label>
+      </ion-item>
+
+      <ion-item mode="ios" button (click)="getDetalheAcao('BBAS3.SA')">
+        <ion-label mode="ios" class="infoimpresa">
+          <table style="width:100%">
+            <tr>
+              <th class="simimpresa">
+                <p>BBAS3.SA</p>
+              </th>
+              <th class="nomeimpresa">
+                <p>Banco do Brasil S.A.</p>
+              </th>
+            </tr>
+          </table>
+        </ion-label>
+      </ion-item>
+
+      <ion-item mode="ios" button (click)="getDetalheAcao('SANB11.SA')">
+        <ion-label mode="ios" class="infoimpresa">
+          <table style="width:100%">
+            <tr>
+              <th class="simimpresa">
+                <p>SANB11.SA</p>
+              </th>
+              <th class="nomeimpresa">
+                <p>Banco Santander (Brasil) S.A.</p>
+              </th>
+            </tr>
+          </table>
+        </ion-label>
+      </ion-item>
+
+      <ion-item mode="ios" button (click)="getDetalheAcao('BPAN4.SA')">
+        <ion-label mode="ios" class="infoimpresa">
+          <table style="width:100%">
+            <tr>
+              <th class="simimpresa">
+                <p>BPAN4.SA</p>
+              </th>
+              <th class="nomeimpresa">
+                <p>Banco Pan S.A.</p>
+              </th>
+            </tr>
+          </table>
+        </ion-label>
+      </ion-item>
+
+
+    </ion-list>
   </div>
 
 
