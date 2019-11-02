@@ -9,16 +9,17 @@
   </ion-toolbar>
 </ion-header>
 
-
-<ion-content>
+<ion-content class="master">
   <div class="container top">
     <div>
-      <ion-button class="buttons" size="large" expand="block" (click)="AlertaReset()">
+      <ion-button mode="ios" size="default" class="buttons" expand="block" (click)="AlertaReset()">
+          <ion-icon name="refresh"></ion-icon>
         <ion-title>Reset</ion-title>
       </ion-button>
     </div>
     <div>
-      <ion-button class="buttons" size="large" expand="block" (click)="AlertaLogout()">
+      <ion-button mode="ios" class="buttons"  expand="block" (click)="Logout()">
+          <ion-icon name="log-out"></ion-icon>
         <ion-title>Logout</ion-title>
       </ion-button>
     </div>

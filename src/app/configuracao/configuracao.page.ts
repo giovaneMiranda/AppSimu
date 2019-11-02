@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-configuracao',
@@ -8,8 +9,12 @@ import { AlertController } from '@ionic/angular';
   
 })
 export class ConfiguracaoPage implements OnInit {
+  service: any;
 
-  constructor(public alertController: AlertController) {}
+  constructor(public alertController: AlertController,
+              private authService: AuthService) {
+
+  }
   
   async AlertaReset() {
     const alert = await this.alertController.create({
@@ -37,22 +42,27 @@ export class ConfiguracaoPage implements OnInit {
     let result = await alert.onDidDismiss();
     console.log(result);
   }
-  async AlertaLogout() {
+  async Logout() {
     const alert = await this.alertController.create({
-      header: 'Logout',
+      header: 'Sair da conta',
       buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+            console.log('Confirm Cancel');
           }
         }, 
         {
           text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
+          handler: async () => {
+            try{
+              await this.authService.logout();
+              console.log('foi');
+            } catch(error){
+              console.error(error);
+            }
           }
         }
       ]
@@ -61,6 +71,8 @@ export class ConfiguracaoPage implements OnInit {
     await alert.present();
     let result = await alert.onDidDismiss();
     console.log(result);
+   
+  
   }
 
   ngOnInit() {
