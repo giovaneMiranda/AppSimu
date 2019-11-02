@@ -44,7 +44,7 @@ export class CarteiraPage implements OnInit {
   ngOnInit() {
   }
 
-  async getDetalheAcao(acao) {
+  async getDetalheAcao(acao:String) {
     await this.presentLoading();
     try {
       this.router.navigate(['/detalheacao', acao]);
