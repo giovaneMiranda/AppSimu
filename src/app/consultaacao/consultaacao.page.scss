@@ -44,14 +44,16 @@ ion-header{
     .infoimpresa {
 
 
-        .simimpresa p{
+        .simimpresa {
             color: var(--ion-color-primary);
-            text-align: left;          
+            text-align: left;
+            width: 30%;
         }
 
-        .nomeimpresa p{
+        .nomeimpresa {
             color: var(--ion-color-primary-contrast);
             text-align: left;
+            width: 70%;
         }
      }
 
