@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { OrdemVenda } from '../../interfaces/ordem-venda';
 
 @Component({
   selector: 'app-modal2',
@@ -7,6 +8,10 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./modal2.page.scss'],
 })
 export class Modal2Page implements OnInit {
+  public venda: OrdemVenda = {};
+
+  isDisabled;
+  isDisabled2;
 
   constructor(private modalControler: ModalController) { }
 
@@ -20,6 +25,25 @@ export class Modal2Page implements OnInit {
   okModal(){
     //salvar infos no banco
     this.modalControler.dismiss();
+  }
+
+  change(test: any) {
+    console.log(this.venda.tipoOrdem);
+    if(this.venda.tipoOrdem == 'Mercado'){
+      this.venda.valorStopLoss = null;
+      this.venda.valorStopGain = null;
+      this.isDisabled = true;
+      this.isDisabled2 = true;
+    }else{
+      if(this.venda.tipoOrdem == 'Stop Loss'){
+        this.isDisabled = false;
+        this.venda.valorStopGain = null;
+        this.isDisabled2 = true;
+      }else{
+        this.isDisabled = false;
+        this.isDisabled2 = false
+      }
+    }
   }
   
 }

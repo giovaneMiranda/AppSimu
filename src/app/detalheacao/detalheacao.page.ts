@@ -151,6 +151,9 @@ export class DetalheAcaoPage implements OnInit {
     const modal = await this.modal1.create({
       component: ModalPage,
       cssClass: 'modalCompra',
+      componentProps: { 
+        id_emp: this.idAcao
+      }
     });
     modal.present();
   }
@@ -159,6 +162,10 @@ export class DetalheAcaoPage implements OnInit {
     const modal2 = await this.modal2.create({
       component: Modal2Page,
       cssClass: 'modalVenda',
+      componentProps: { 
+        id_emp: this.idAcao,
+        dinheiro: this.dataUser.dinheiro
+      }
     });
     modal2.present();
   }

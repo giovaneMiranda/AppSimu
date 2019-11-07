@@ -3,23 +3,23 @@
 <ion-content class="master">
   <ion-item>
     <ion-label color="light">Ordem de Venda</ion-label>
-    <ion-select style="color:white">
-      <ion-select-option value="mercado">Mercado</ion-select-option>
-      <ion-select-option value="loss">Stop Loss</ion-select-option>
-      <ion-select-option value="gain">Stop Gain</ion-select-option>
+    <ion-select style="color:white" (ionChange)="change($event);" [(ngModel)]="venda.tipoOrdem" >
+      <ion-select-option value="Mercado">Mercado</ion-select-option>
+      <ion-select-option value="Stop Loss">Stop Loss</ion-select-option>
+      <ion-select-option value="Stop Simultâneo">Stop Simultâneo</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label position="floating" color="light">Quantidade</ion-label>
-    <ion-input type="number" color="light"></ion-input>
+    <ion-input type="number" color="light" [(ngModel)]="venda.quantidadeAcao"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating" color="light">Valor Stop Loss</ion-label>
-    <ion-input type="number" color="light"></ion-input>
+    <ion-input disabled="{{isDisabled}}" type="number" color="light" [(ngModel)]="venda.valorStopLoss"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating" color="light">Valor Stop Gain</ion-label>
-    <ion-input type="number" color="light"></ion-input>
+    <ion-input disabled="{{isDisabled2}}" type="number" color="light" [(ngModel)]="venda.valorStopGain"></ion-input>
   </ion-item>
   <ion-footer>
     <ion-toolbar>

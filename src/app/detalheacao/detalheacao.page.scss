@@ -30,10 +30,15 @@ ion-icon{
     }
 
 
+.butdiv{
+    text-align: center;
+}
+    
 .buttons{ 
     text-align: center;
     width: 40%;
-    margin: 15px 15px; 
+    display: inline-block;
+    margin: 10px 10px;
 }
 
 #graf {

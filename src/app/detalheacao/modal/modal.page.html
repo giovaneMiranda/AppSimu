@@ -1,11 +1,11 @@
 <!-- [(ngModel)]="compra.nomeAcao"?
- [(ngModel)]="compra.tipoOrdem" -->
+  -->
 
 <ion-content class="master">
   <ion-item>
     <ion-label color="light">Ordem de Compra</ion-label>
-    <ion-select style="color:white"> 
-      <ion-select-option value="Mercado">Mercado</ion-select-option>
+    <ion-select style="color:white" [(ngModel)]="compra.tipoOrdem" (ionChange)="change($event);"> 
+      <ion-select-option value="Mercado"  ng-model="X">Mercado</ion-select-option>
       <ion-select-option value="Limitado">Limitado</ion-select-option>
     </ion-select>
   </ion-item>
@@ -15,9 +15,9 @@
       </ion-item>
       <ion-item>
           <ion-label position="floating" color="light">Valor</ion-label>
-          <ion-input type="number" color="light" [(ngModel)]="compra.valorOrdem"></ion-input>
+          <ion-input disabled="{{isDisabled}}" type="number" color="light" [(ngModel)]="compra.valorOrdem" ></ion-input>
       </ion-item>
-      <ion-footer>
+      <ion-footer> 
           <ion-toolbar>
             <section>
               <ion-button class="buttons" color="danger" (click)="closeModal()" >Cancel</ion-button>
