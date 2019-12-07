@@ -1,27 +1,20 @@
 ion-header{
 
     .md ion-toolbar {
-     --background:var(--ion-color-primary);
-    
+        --background:var(--ion-color-primary); 
+    }
  
-     
- }
+    .ios ion-toolbar {
+        --background:var(--ion-color-primary);
+        padding-top: 11%!important;
+    }
  
- .ios ion-toolbar {
-     --background:var(--ion-color-primary);
-     padding-top: 11%!important;
- 
-     
- }
- 
- } 
-  ion-toolbar {
-     --background:var(--ion-color-secondary);
-     padding-bottom: 0px!important;
-    
- 
-     padding-top: 3%!important;
- 
+} 
+  
+ion-toolbar {
+    --background:var(--ion-color-secondary);
+    padding-bottom: 0px!important;
+    padding-top: 3%!important;
 }
 
 
