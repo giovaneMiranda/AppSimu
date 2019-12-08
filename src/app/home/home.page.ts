@@ -68,7 +68,7 @@ export class HomePage implements OnInit {
       this.router.navigate(['/toolbar']);
     });
   }
-  AprenderButton(){
+  aprenderButton(){
     this.zone.runOutsideAngular(() => {
       this.router.navigate(['/aprender']);
     });
