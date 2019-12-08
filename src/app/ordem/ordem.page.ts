@@ -33,6 +33,12 @@ export class OrdemPage implements OnInit {
 
 
 
+
+
+  }
+
+  ionViewWillEnter(){
+
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
         this.userId = user.uid;
@@ -51,8 +57,6 @@ export class OrdemPage implements OnInit {
       }
 
     });
-
-
   }
 
   ngOnInit() {

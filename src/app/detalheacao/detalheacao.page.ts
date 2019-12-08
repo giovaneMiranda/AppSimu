@@ -16,7 +16,8 @@ am4core.useTheme(am4themes_animated);
 import { ModalPage } from '../detalheacao/modal/modal.page'
 import { Modal2Page } from '../detalheacao/modal2/modal2.page';
 import { OrdemCompra } from '../interfaces/ordem-compra';
-
+import { HttpClient } from '@angular/common/http';
+import { Acaofix } from '../interfaces/acaofix';
 
 
 @Component({
@@ -33,7 +34,15 @@ export class DetalheAcaoPage implements OnInit {
   dataFromModal;
   private chart: am4charts.XYChart;
   private ordemCompra: OrdemCompra;
-  
+  public petr4: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
+  public oibr3: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
+  public vvar3: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
+  public itsa4: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
+  public bbas3: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
+  public sanb11: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
+  public bpan4: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
+
+
 
   constructor(private authService: AuthService,
     private afs: AngularFirestore,
@@ -41,12 +50,8 @@ export class DetalheAcaoPage implements OnInit {
     private modal2: ModalController,
     private zone: NgZone,
     private activatedRoute: ActivatedRoute,
-
+    public http: HttpClient
   ) {
-
-
-
-
 
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
@@ -60,6 +65,11 @@ export class DetalheAcaoPage implements OnInit {
     });
 
     this.idAcao = this.activatedRoute.snapshot.params['id'];
+    
+
+
+   
+    
   }
 
   ngOnInit() {
@@ -68,6 +78,8 @@ export class DetalheAcaoPage implements OnInit {
 
 
   ngAfterViewInit() {
+
+
     this.zone.runOutsideAngular(() => {
 
 
@@ -113,6 +125,8 @@ export class DetalheAcaoPage implements OnInit {
 
       chart.cursor = new am4charts.XYCursor();
 
+      
+      
       // a separate series for scrollbar
       let lineSeries = chart.series.push(new am4charts.LineSeries());
       lineSeries.dataFields.dateX = "col0";
