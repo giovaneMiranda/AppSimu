@@ -29,19 +29,20 @@ import { Acaofix } from '../interfaces/acaofix';
 export class DetalheAcaoPage implements OnInit {
   comp: boolean;
   vend: boolean;
+  dinh: boolean;
   public dataUser: Userbd;
   private idAcao: String = null;
   dataFromModal;
   private chart: am4charts.XYChart;
   private ordemCompra: OrdemCompra;
-  public petr4: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
-  public oibr3: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
-  public vvar3: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
-  public itsa4: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
-  public bbas3: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
-  public sanb11: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
-  public bpan4: Acaofix = {valorOpen:1,valorClose:2,valorHigh:3,valorLow:4};
-
+  public petr4: Acaofix = {valorOpen:30.33,valorClose:30.31,valorHigh:30.36,valorLow:30.30};
+  public oibr3: Acaofix = {valorOpen:0.94,valorClose:0.94,valorHigh:0.94,valorLow:0.93};
+  public vvar3: Acaofix = {valorOpen:10.12,valorClose:10.10,valorHigh:10.13,valorLow:10.08};
+  public itsa4: Acaofix = {valorOpen:13.60,valorClose:13.65,valorHigh:13.67,valorLow:13.6};
+  public bbas3: Acaofix = {valorOpen:48.66,valorClose:48.6,valorHigh:48.72,valorLow:48.57};
+  public sanb11: Acaofix = {valorOpen:44.43,valorClose:44.44,valorHigh:44.50,valorLow:444.39};
+  public bpan4: Acaofix = {valorOpen:9.17,valorClose:9.2,valorHigh:9.21,valorLow:9.17};
+  public acaoFix: Acaofix={};
 
 
   constructor(private authService: AuthService,
@@ -52,7 +53,7 @@ export class DetalheAcaoPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     public http: HttpClient
   ) {
-
+    if(this.dinh == null){
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
         this.afs.collection('User')
@@ -63,17 +64,46 @@ export class DetalheAcaoPage implements OnInit {
           });
       }
     });
-
+  }
     this.idAcao = this.activatedRoute.snapshot.params['id'];
     
+    if(this.idAcao==="PETR4.SA"){
+      this.acaoFix=  this.petr4; 
+    }
 
+    if(this.idAcao==="OIBR3.SA"){
+      this.acaoFix=  this.oibr3;
+    }
+
+    if(this.idAcao==="VVAR3.SA"){
+      this.acaoFix=   this.vvar3;
+    }
+
+    if(this.idAcao==="ITSA4.SA"){
+      this.acaoFix=   this.itsa4;
+    }
+
+    if(this.idAcao==="BBAS3.SA"){
+      this.acaoFix=   this.bbas3;
+    }
+
+    if(this.idAcao==="SANB11.SA"){
+      this.acaoFix=   this.sanb11;
+    }
+
+
+    if(this.idAcao==="BPAN4.SA"){
+      this.acaoFix=   this.bpan4;
+    }
+
+    // const newUserObject = Object.assign({}, this.userRegister);
 
    
     
   }
 
   ngOnInit() {
-    
+    this.dinh = null;
   }
 
 
@@ -121,7 +151,7 @@ export class DetalheAcaoPage implements OnInit {
       series.dataFields.lowValueY = "col3";
       series.dataFields.highValueY = "col2";
       series.simplifiedProcessing = true;
-      series.tooltipText = "Open:R${openValueY.value}\nLow:R${lowValueY.value}\nHigh:R${highValueY.value}\nClose:R${valueY.value}";
+      series.tooltipText = "Abertura:R${openValueY.value}\nBaixa:R${lowValueY.value}\nAlta:R${highValueY.value}\nFechamento:R${valueY.value}";
 
       chart.cursor = new am4charts.XYCursor();
 
@@ -166,9 +196,34 @@ export class DetalheAcaoPage implements OnInit {
       component: ModalPage,
       cssClass: 'modalCompra',
       componentProps: { 
-        id_emp: this.idAcao
+        id_emp: this.idAcao,
+        fechamento: this.acaoFix.valorClose
       }
     });
+    modal.onDidDismiss()
+    .then((data: any) => {
+      const dinheiro = data['data']; // Here's your selected user!
+      console.log(dinheiro);
+      this.dinh = false;
+      this.authService.getAuth().onAuthStateChanged(use => {
+        if (use) {
+      this.afs.collection('User')
+      .doc(use.uid)
+      .valueChanges()
+      .subscribe(doUser => {
+        this.dataUser = doUser;
+        this.dataUser.dinheiro = dinheiro;
+        this.afs.collection('User')
+        .doc(use.uid).update(this.dataUser);
+        
+      }); 
+    }
+    });
+  });
+
+
+
+    
     modal.present();
   }
 
@@ -178,9 +233,32 @@ export class DetalheAcaoPage implements OnInit {
       cssClass: 'modalVenda',
       componentProps: { 
         id_emp: this.idAcao,
-        dinheiro: this.dataUser.dinheiro
+        fechamento: this.acaoFix.valorClose
       }
     });
+    modal2.onDidDismiss()
+    .then((data: any) => {
+      const dinheiro = data['data']; // Here's your selected user!
+      console.log(dinheiro);
+      this.dinh = true;
+      this.authService.getAuth().onAuthStateChanged(use => {
+        if (use) {
+      this.afs.collection('User')
+      .doc(use.uid)
+      .valueChanges()
+      .subscribe(doUser => {
+        this.dataUser = doUser;
+        this.dataUser.dinheiro = dinheiro;
+        this.afs.collection('User')
+        .doc(use.uid).update(this.dataUser);
+      }); 
+    }
+    });
+
+
+
+
+  });
     modal2.present();
   }
 

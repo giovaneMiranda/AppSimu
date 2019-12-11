@@ -25,6 +25,12 @@ export class CarteiraPage implements OnInit {
     private toastController: ToastController,
     private router: Router) {
 
+   
+
+
+  }
+
+  ionViewWillEnter(){
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
         this.userId = user.uid;
@@ -37,8 +43,6 @@ export class CarteiraPage implements OnInit {
         })
       }
     })
-
-
 
   }
   ngOnInit() {

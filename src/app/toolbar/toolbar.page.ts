@@ -13,6 +13,13 @@ export class ToolbarPage implements OnInit {
 
   constructor(private authService: AuthService,
     private afs: AngularFirestore, ) {
+
+  }
+
+  ngOnInit() {
+  }
+
+  ionViewWillEnter(){
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
 
@@ -26,9 +33,6 @@ export class ToolbarPage implements OnInit {
       }
     }
     )
-  }
-
-  ngOnInit() {
   }
 
 }
