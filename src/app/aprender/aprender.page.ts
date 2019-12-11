@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aprender.page.scss'],
 })
 export class AprenderPage implements OnInit {
-
+  
+  componentes:  Componente[] = [
+    {
+      name: 'Action Sheet',
+      redirectTo: '/configuracao'
+    }
+  ];
   constructor() { }
 
   ngOnInit() {
   }
+}
 
+interface Componente{
+  name: string;
+  redirectTo: string;
 }

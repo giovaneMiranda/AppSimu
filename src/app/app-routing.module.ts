@@ -16,7 +16,14 @@ const routes: Routes = [
   { path: 'consultaacao', loadChildren: './consultaacao/consultaacao.module#ConsultaacaoPageModule', canActivate: [AuthGuard] },
   { path: 'carteira', loadChildren: './carteira/carteira.module#CarteiraPageModule', canActivate: [AuthGuard] },
   { path: 'ordem', loadChildren: './ordem/ordem.module#OrdemPageModule', canActivate: [AuthGuard] },
-  { path: 'configuracao', loadChildren: './configuracao/configuracao.module#ConfiguracaoPageModule' , canActivate: [AuthGuard]},
+  { path: 'configuracao', loadChildren: './configuracao/configuracao.module#ConfiguracaoPageModule' , canActivate: [AuthGuard]},  { path: 'pagina1', loadChildren: './aprender/pagina1/pagina1.module#Pagina1PageModule' },
+  { path: 'pagina2', loadChildren: './aprender/pagina2/pagina2.module#Pagina2PageModule' },
+  { path: 'pagina3', loadChildren: './aprender/pagina3/pagina3.module#Pagina3PageModule' },
+  { path: 'pagina4', loadChildren: './aprender/pagina4/pagina4.module#Pagina4PageModule' },
+  { path: 'pagina5', loadChildren: './aprender/pagina5/pagina5.module#Pagina5PageModule' },
+  { path: 'pagina6', loadChildren: './aprender/pagina6/pagina6.module#Pagina6PageModule' },
+  { path: 'pagina7', loadChildren: './aprender/pagina7/pagina7.module#Pagina7PageModule' },
+
 
 
 
