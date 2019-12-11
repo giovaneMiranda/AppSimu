@@ -195,7 +195,8 @@ export class DetalheAcaoPage implements OnInit {
       component: ModalPage,
       cssClass: 'modalCompra',
       componentProps: { 
-        id_emp: this.idAcao
+        id_emp: this.idAcao,
+        fechamento: this.acaoFix.valorClose
       }
     });
     modal.present();
@@ -207,7 +208,7 @@ export class DetalheAcaoPage implements OnInit {
       cssClass: 'modalVenda',
       componentProps: { 
         id_emp: this.idAcao,
-        dinheiro: this.dataUser.dinheiro
+        fechamento: this.acaoFix.valorClose
       }
     });
     modal2.present();
