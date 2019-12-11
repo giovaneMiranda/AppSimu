@@ -29,6 +29,7 @@ import { Acaofix } from '../interfaces/acaofix';
 export class DetalheAcaoPage implements OnInit {
   comp: boolean;
   vend: boolean;
+  dinh: boolean;
   public dataUser: Userbd;
   private idAcao: String = null;
   dataFromModal;
@@ -52,7 +53,7 @@ export class DetalheAcaoPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     public http: HttpClient
   ) {
-
+    if(this.dinh == null){
     this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
         this.afs.collection('User')
@@ -63,7 +64,7 @@ export class DetalheAcaoPage implements OnInit {
           });
       }
     });
-
+  }
     this.idAcao = this.activatedRoute.snapshot.params['id'];
     
     if(this.idAcao==="PETR4.SA"){
@@ -102,7 +103,7 @@ export class DetalheAcaoPage implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.dinh = null;
   }
 
 
@@ -199,6 +200,30 @@ export class DetalheAcaoPage implements OnInit {
         fechamento: this.acaoFix.valorClose
       }
     });
+    modal.onDidDismiss()
+    .then((data: any) => {
+      const dinheiro = data['data']; // Here's your selected user!
+      console.log(dinheiro);
+      this.dinh = false;
+      this.authService.getAuth().onAuthStateChanged(use => {
+        if (use) {
+      this.afs.collection('User')
+      .doc(use.uid)
+      .valueChanges()
+      .subscribe(doUser => {
+        this.dataUser = doUser;
+        this.dataUser.dinheiro = dinheiro;
+        this.afs.collection('User')
+        .doc(use.uid).update(this.dataUser);
+        
+      }); 
+    }
+    });
+  });
+
+
+
+    
     modal.present();
   }
 
@@ -211,6 +236,29 @@ export class DetalheAcaoPage implements OnInit {
         fechamento: this.acaoFix.valorClose
       }
     });
+    modal2.onDidDismiss()
+    .then((data: any) => {
+      const dinheiro = data['data']; // Here's your selected user!
+      console.log(dinheiro);
+      this.dinh = true;
+      this.authService.getAuth().onAuthStateChanged(use => {
+        if (use) {
+      this.afs.collection('User')
+      .doc(use.uid)
+      .valueChanges()
+      .subscribe(doUser => {
+        this.dataUser = doUser;
+        this.dataUser.dinheiro = dinheiro;
+        this.afs.collection('User')
+        .doc(use.uid).update(this.dataUser);
+      }); 
+    }
+    });
+
+
+
+
+  });
     modal2.present();
   }
 

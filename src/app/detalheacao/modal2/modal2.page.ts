@@ -17,6 +17,7 @@ export class Modal2Page implements OnInit {
   @Input() id_emp;
   @Input() fechamento;
   public dataUser: Userbd;
+  public datUser2: Userbd;
   public carteira: Acao = {};
   public dinheiro: any;
   public quant: number; 
@@ -42,10 +43,10 @@ export class Modal2Page implements OnInit {
   
   async okModal(){
 
-    try {
+   try {
       this.carteira.id = this.id_emp;
    } catch (error) {
-     this.presentAlert("Você não tem ações dessa empresa em sua carteira");
+      this.presentAlert("Você não tem ações dessa empresa em sua carteira");
    }
 
     if(this.venda.tipoOrdem == 'Mercado'){
@@ -75,30 +76,38 @@ export class Modal2Page implements OnInit {
     //pegar dinheiro
     this.dinheiro = this.dataUser.dinheiro+(this.carteira.quantidade*this.fechamento);
     console.log(this.dinheiro);
+/*     this.authService.getAuth().onAuthStateChanged(use => {
+      if (use) {
+    this.afs.collection('User')
+    .doc(use.uid)
+    .valueChanges()
+    .subscribe(doUser => {
+      this.datUser2 = doUser;
+      this.datUser2.dinheiro = this.dinheiro;
+      //this.dataUser.dinheiro = 10000;
+      this.afs.collection('User')
+      .doc(use.uid).set(this.datUser2);
+      //this.dataUser.dinheiro = this.dinheiro;
+
+
+    }); 
+  }
+  }); */
 
     this.authService.getAuth().onAuthStateChanged(user => {
-
-    this.afs.collection('User')
-    .doc(user.uid)
-    .valueChanges()
-    .subscribe(docUser => {
-      this.dataUser = docUser;
-      this.dataUser.dinheiro = this.dinheiro;
-
+    if (user) {
       this.afs.collection('User')
-      .doc(user.uid).set(this.dataUser);
+        .doc(user.uid)
+        .valueChanges()
+        .subscribe(docUser => {
+          this.savemoney(docUser)
+          this.afs.collection('User')
+          .doc(user.uid).collection('CarteiraAcao').doc(this.carteira.id).delete();
+        });
+    }
+  }); 
 
-      this.dataUser.dinheiro = this.dinheiro;
-
-      this.afs.collection('User')
-      .doc(user.uid).set(this.dataUser);
-
-      this.afs.collection('User')
-      .doc(user.uid).collection('CarteiraAcao').doc(this.carteira.id).delete();
-      this.modalControler.dismiss();
-    }); 
-
-  });
+  this.modalControler.dismiss(this.dinheiro);
 
   }else{
 

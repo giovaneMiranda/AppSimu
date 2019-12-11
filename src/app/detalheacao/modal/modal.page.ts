@@ -75,15 +75,12 @@ closeModal(){
       this.presentAlert("Indique uma quantidade");
     }else{ 
 
-
-
     this.carteira.id = this.id_emp;
     this.carteira.quantidade = this.compra.quantidadeAcao;
     this.carteira.valorCompra = this.fechamento; //valor na hora
     this.carteira.dataCompra = Date.now();
     //this.carteira.dataCompra = this.date.seconds;
    
-
      this.authService.getAuth().onAuthStateChanged(user => {
       if (user) {
         this.afs.collection('User')
@@ -97,13 +94,14 @@ closeModal(){
 
     this.dinheiro = this.dataUser.dinheiro-(this.compra.quantidadeAcao*this.fechamento);
 
-     this.authService.getAuth().onAuthStateChanged(user => {
+      this.authService.getAuth().onAuthStateChanged(user => {
         if (user) {
           this.afs.collection('User')
             .doc(user.uid).collection('CarteiraAcao').doc(this.carteira.id).set(this.carteira);
     }
-
-    this.afs.collection('User')
+  });
+/*
+     this.afs.collection('User')
     .doc(user.uid)
     .valueChanges()
     .subscribe(docUser => {
@@ -112,23 +110,24 @@ closeModal(){
       this.dataUser.dinheiro = this.dinheiro;
 
       this.afs.collection('User')
-      .doc(user.uid).set(this.dataUser);
-
-      this.modalControler.dismiss();
-    }); 
+      .doc(user.uid).set(this.dataUser);  
+      
+      
+         }); 
 
   });
 
     }
-}
+}*/
+
+      this.modalControler.dismiss(this.dinheiro);
+      
+ 
 //}catch{
 
-//} finally {
- // this.loading.dismiss();
-
-//}
+    }
+  }
 }
-
 
 change(test: any) {
   console.log(this.compra.tipoOrdem);
